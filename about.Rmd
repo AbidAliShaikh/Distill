@@ -1,0 +1,13 @@
+---
+title: "About this site"
+description: |
+  Some additional details about the website
+  It looks nice typing anything here and generating using build 
+  Everything converting to HTML tags
+  
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
