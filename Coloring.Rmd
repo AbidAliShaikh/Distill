@@ -1,0 +1,53 @@
+---
+title: "Colors in R"
+author: "Abid Ali Shaikh"
+date: "12/29/2021"
+output: distill::distill_article
+---
+
+## R Markdown
+
+### The colors in R
+
+```{r}
+table(gsub('[1-9]','',colors()))
+```
+
+some color display bars are shown below
+
+```{r}
+barplot(1:20, col=rainbow(20))
+```
+
+Using ramps we can get almost any number of colors between two colors
+
+```{r}
+d <- colorRampPalette(c('yellow','green','red','brown'))
+d(20)
+barplot(1:20,col=d(20))
+barplot(rep(3,20),col=grey.colors(20))
+```
+
+### The library colorspace comes with GUI of pallete selection
+
+```{r coloring1}
+library(colorspace)
+
+p <- choose_palette()
+barplot(rep(1,8),col=p(8))
+
+```
+#### The above selection is easiest and more versatile
+
+
+```{r coloring2}
+library(ggplot2)
+s <- read.table('crawley/scatter1.txt',header=T)
+g1 <- ggplot(s, aes(xv,ys))+geom_smooth(method='lm',size=3,colour='blue')
+g2 <- g1+geom_point(colour='skyblue',alpha=1/2)
+
+plot(g2)
+
+```
+
+

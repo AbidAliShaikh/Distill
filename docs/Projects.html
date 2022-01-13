@@ -87,7 +87,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>My Distill Website: Projects</title>
+  <title>My Distill Website: Steps in the Book "R in Action"</title>
 
 
 
@@ -97,20 +97,20 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <meta name="article:author" content="Abid Ali Shaikh"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="My Distill Website: Projects"/>
+  <meta property="og:title" content="My Distill Website: Steps in the Book &quot;R in Action&quot;"/>
   <meta property="og:type" content="article"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="My Distill Website"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="My Distill Website: Projects"/>
+  <meta property="twitter:title" content="My Distill Website: Steps in the Book &quot;R in Action&quot;"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Projects"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Abid Ali Shaikh"]}]}]},{"type":"character","attributes":{},"value":["12/14/2021"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Steps in the Book \"R in Action\""]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Abid Ali Shaikh"]}]}]},{"type":"character","attributes":{},"value":["12/14/2021"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2058,7 +2058,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Projects","authors":[{"author":"Abid Ali Shaikh","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-12-14T00:00:00.000+05:00","citationText":"Shaikh, 2021"}
+{"title":"Steps in the Book \"R in Action\"","authors":[{"author":"Abid Ali Shaikh","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-12-14T00:00:00.000+05:00","citationText":"Shaikh, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2072,6 +2072,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <a href="index.html">Home</a>
 <a href="Projects.html">Projects</a>
 <a href="about.html">About</a>
+<div class="nav-dropdown">
+<button class="nav-dropbtn">
+Book Exercise
+ 
+<span class="down-arrow">&#x25BE;</span>
+</button>
+<div class="nav-dropdown-content">
+<a href="Coloring.html">Coloring</a>
+<a href="SortApprox.html">SortApprox</a>
+</div>
+</div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
 </div>
 </nav>
@@ -2081,7 +2092,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Projects</h1>
+<h1>Steps in the Book “R in Action”</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
 
@@ -2100,24 +2111,580 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>cars</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/attach.html'>attach</a></span><span class='op'>(</span><span class='va'>women</span><span class='op'>)</span>
+<span class='va'>lm1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>weight</span><span class='op'>~</span><span class='va'>height</span><span class='op'>)</span>
+<span class='co'># The fitted values are those that form abline</span>
+<span class='fu'><a href='https://rdrr.io/r/stats/fitted.values.html'>fitted</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>     speed           dist       
- Min.   : 4.0   Min.   :  2.00  
- 1st Qu.:12.0   1st Qu.: 26.00  
- Median :15.0   Median : 36.00  
- Mean   :15.4   Mean   : 42.98  
- 3rd Qu.:19.0   3rd Qu.: 56.00  
- Max.   :25.0   Max.   :120.00  </code></pre>
+<pre><code>       1        2        3        4        5        6        7 
+112.5833 116.0333 119.4833 122.9333 126.3833 129.8333 133.2833 
+       8        9       10       11       12       13       14 
+136.7333 140.1833 143.6333 147.0833 150.5333 153.9833 157.4333 
+      15 
+160.8833 </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>weight</span>
+</code></pre>
 </div>
-<h2 id="including-plots">Including Plots</h2>
-<p>You can also embed plots, for example:</p>
+<pre><code> [1] 115 117 120 123 126 129 132 135 139 142 146 150 154 159 164</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>#Residuals are differences from observed values from mean values (fitted values)</span>
+<span class='fu'><a href='https://rdrr.io/r/stats/residuals.html'>residuals</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>          1           2           3           4           5 
+ 2.41666667  0.96666667  0.51666667  0.06666667 -0.38333333 
+          6           7           8           9          10 
+-0.83333333 -1.28333333 -1.73333333 -1.18333333 -1.63333333 
+         11          12          13          14          15 
+-1.08333333 -0.53333333  0.01666667  1.56666667  3.11666667 </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>a</span><span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/stats/fitted.values.html'>fitted</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span><span class='op'>+</span><span class='fu'><a href='https://rdrr.io/r/stats/residuals.html'>residuals</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>a</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>  1   2   3   4   5   6   7   8   9  10  11  12  13  14  15 
+115 117 120 123 126 129 132 135 139 142 146 150 154 159 164 </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>weight</span> <span class='op'>==</span> <span class='va'>a</span>
+</code></pre>
+</div>
+<pre><code>   1    2    3    4    5    6    7    8    9   10   11   12   13   14 
+TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE 
+  15 
+TRUE </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>height</span>,<span class='va'>weight</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span>; <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="Projects_files/figure-html5/RinAction-1.png" width="624" /></p>
+<pre><code>
+Call:
+lm(formula = weight ~ height)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-1.7333 -1.1333 -0.3833  0.7417  3.1167 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -87.51667    5.93694  -14.74 1.71e-09 ***
+height        3.45000    0.09114   37.85 1.09e-14 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 1.525 on 13 degrees of freedom
+Multiple R-squared:  0.991, Adjusted R-squared:  0.9903 
+F-statistic:  1433 on 1 and 13 DF,  p-value: 1.091e-14</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>#The Residual Standard error 1.525 lbs can be thought of as average error in predicting weight from height</span>
+</code></pre>
+</div>
+</div>
+<h2 id="quadratic-regression">Quadratic regression</h2>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="Projects_files/figure-html5/pressure-1.png" width="624" /></p>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># F Statics ....</span>
+<span class='va'>lm2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>weight</span> <span class='op'>~</span> <span class='va'>height</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/AsIs.html'>I</a></span><span class='op'>(</span><span class='va'>height</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span> <span class='co'>#Quadratic regression</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>height</span>,<span class='va'>weight</span><span class='op'>)</span>; 
+<span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span><span class='op'>(</span><span class='va'>height</span>, <span class='fu'><a href='https://rdrr.io/r/stats/fitted.values.html'>fitted</a></span><span class='op'>(</span><span class='va'>lm2</span><span class='op'>)</span>,lty<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
+</code></pre>
 </div>
-<p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<img src="Projects_files/figure-html5/F%20Statistics-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>lm2</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+Call:
+lm(formula = weight ~ height + I(height^2))
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.50941 -0.29611 -0.00941  0.28615  0.59706 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 261.87818   25.19677  10.393 2.36e-07 ***
+height       -7.34832    0.77769  -9.449 6.58e-07 ***
+I(height^2)   0.08306    0.00598  13.891 9.32e-09 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.3841 on 12 degrees of freedom
+Multiple R-squared:  0.9995,    Adjusted R-squared:  0.9994 
+F-statistic: 1.139e+04 on 2 and 12 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/diff.html'>diff</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/fitted.values.html'>fitted</a></span><span class='op'>(</span><span class='va'>lm2</span><span class='op'>)</span><span class='op'>)</span>; <span class='fu'><a href='https://rdrr.io/r/base/diff.html'>diff</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/fitted.values.html'>fitted</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span><span class='op'>)</span> 
+</code></pre>
+</div>
+<pre><code>       2        3        4        5        6        7        8 
+2.370168 2.536296 2.702424 2.868552 3.034680 3.200808 3.366936 
+       9       10       11       12       13       14       15 
+3.533064 3.699192 3.865320 4.031448 4.197576 4.363704 4.529832 </code></pre>
+<pre><code>   2    3    4    5    6    7    8    9   10   11   12   13   14   15 
+3.45 3.45 3.45 3.45 3.45 3.45 3.45 3.45 3.45 3.45 3.45 3.45 3.45 3.45 </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>#Now</span>
+<span class='co'># Weight = 261.8 - 7.34 * height + 0.83 height^2    is a better fit</span>
+<span class='co'># weighted sum of predictor also fits under rubrik of linear regression; </span>
+<span class='co'>#in general an nth degree polynomial produces n-1 bends</span>
+
+<span class='va'>lm3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>weight</span> <span class='op'>~</span> <span class='va'>height</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/AsIs.html'>I</a></span><span class='op'>(</span><span class='va'>height</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>+</span><span class='fu'><a href='https://rdrr.io/r/base/AsIs.html'>I</a></span><span class='op'>(</span><span class='va'>height</span><span class='op'>^</span><span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span> <span class='co'>#cubic regression</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>height</span>,<span class='va'>weight</span><span class='op'>)</span>; 
+<span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span><span class='op'>(</span><span class='va'>height</span>, <span class='fu'><a href='https://rdrr.io/r/stats/fitted.values.html'>fitted</a></span><span class='op'>(</span><span class='va'>lm3</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="Projects_files/figure-html5/F%20Statistics-2.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>lm3</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+Call:
+lm(formula = weight ~ height + I(height^2) + I(height^3))
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.40677 -0.17391  0.03091  0.12051  0.42191 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)   
+(Intercept) -8.967e+02  2.946e+02  -3.044  0.01116 * 
+height       4.641e+01  1.366e+01   3.399  0.00594 **
+I(height^2) -7.462e-01  2.105e-01  -3.544  0.00460 **
+I(height^3)  4.253e-03  1.079e-03   3.940  0.00231 **
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.2583 on 11 degrees of freedom
+Multiple R-squared:  0.9998,    Adjusted R-squared:  0.9997 
+F-statistic: 1.679e+04 on 3 and 11 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/diff.html'>diff</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/fitted.values.html'>fitted</a></span><span class='op'>(</span><span class='va'>lm3</span><span class='op'>)</span><span class='op'>)</span>; <span class='fu'><a href='https://rdrr.io/r/base/diff.html'>diff</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/fitted.values.html'>fitted</a></span><span class='op'>(</span><span class='va'>lm2</span><span class='op'>)</span><span class='op'>)</span> 
+</code></pre>
+</div>
+<pre><code>       2        3        4        5        6        7        8 
+2.768207 2.781243 2.819795 2.883861 2.973443 3.088541 3.229153 
+       9       10       11       12       13       14       15 
+3.395281 3.586925 3.804083 4.046757 4.314946 4.608651 4.927871 </code></pre>
+<pre><code>       2        3        4        5        6        7        8 
+2.370168 2.536296 2.702424 2.868552 3.034680 3.200808 3.366936 
+       9       10       11       12       13       14       15 
+3.533064 3.699192 3.865320 4.031448 4.197576 4.363704 4.529832 </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>##########------------------------------------------------------------------###########</span>
+</code></pre>
+</div>
+</div>
+##Another Code chunk worth mentioning
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>states</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span><span class='op'>(</span><span class='va'>state.x77</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'Murder'</span>,<span class='st'>'Population'</span>,<span class='st'>'Illiteracy'</span>,<span class='st'>'Income'</span>,<span class='st'>'Frost'</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span>
+<span class='va'>s2</span> <span class='op'>&lt;-</span> <span class='va'>states</span>
+<span class='va'>lm1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>Murder</span> <span class='op'>~</span> <span class='va'>.</span> , data<span class='op'>=</span><span class='va'>states</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+Call:
+lm(formula = Murder ~ ., data = states)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.7960 -1.6495 -0.0811  1.4815  7.6210 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 1.235e+00  3.866e+00   0.319   0.7510    
+Population  2.237e-04  9.052e-05   2.471   0.0173 *  
+Illiteracy  4.143e+00  8.744e-01   4.738 2.19e-05 ***
+Income      6.442e-05  6.837e-04   0.094   0.9253    
+Frost       5.813e-04  1.005e-02   0.058   0.9541    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 2.535 on 45 degrees of freedom
+Multiple R-squared:  0.567, Adjusted R-squared:  0.5285 
+F-statistic: 14.73 on 4 and 45 DF,  p-value: 9.133e-08</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>###-----------</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://www.sthda.com/english/wiki/ggcorrplot'>ggcorrplot</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-forge.r-project.org/projects/car/'>car</a></span><span class='op'>)</span>
+<span class='va'>ggcor</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cor</a></span><span class='op'>(</span><span class='va'>states</span><span class='op'>[</span>,<span class='op'>-</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/ggcorrplot/man/ggcorrplot.html'>ggcorrplot</a></span><span class='op'>(</span><span class='va'>ggcor</span>, hc.order <span class='op'>=</span> <span class='cn'>TRUE</span>, type <span class='op'>=</span> <span class='st'>"lower"</span>, lab <span class='op'>=</span> <span class='cn'>TRUE</span>, lab_size <span class='op'>=</span> <span class='fl'>3</span>, method<span class='op'>=</span><span class='st'>"circle"</span>,colors <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"tomato2"</span>, <span class='st'>"white"</span>, <span class='st'>"springgreen3"</span><span class='op'>)</span>,
+           title<span class='op'>=</span><span class='st'>"Correlogram of Illitercy in US"</span>, ggtheme<span class='op'>=</span><span class='va'>theme_bw</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="Projects_files/figure-html5/unnamed-chunk-1-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>###-----------</span>
+<span class='va'>lm1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>Murder</span><span class='op'>~</span><span class='va'>.</span> <span class='op'>+</span> <span class='va'>Income</span><span class='op'>:</span><span class='va'>Frost</span>, data<span class='op'>=</span><span class='va'>states</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+Call:
+lm(formula = Murder ~ . + Income:Frost, data = states)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.6351 -1.1679 -0.2744  1.6419  5.9772 
+
+Coefficients:
+               Estimate Std. Error t value Pr(&gt;|t|)   
+(Intercept)   2.451e+01  9.150e+00   2.679  0.01036 * 
+Population    2.714e-04  8.622e-05   3.148  0.00295 **
+Illiteracy    2.344e+00  1.043e+00   2.247  0.02973 * 
+Income       -4.503e-03  1.769e-03  -2.545  0.01450 * 
+Frost        -1.867e-01  6.829e-02  -2.733  0.00900 **
+Income:Frost  3.922e-05  1.417e-05   2.768  0.00822 **
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 2.366 on 44 degrees of freedom
+Multiple R-squared:  0.6312,    Adjusted R-squared:  0.5893 
+F-statistic: 15.06 on 5 and 44 DF,  p-value: 1.296e-08</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="Projects_files/figure-html5/unnamed-chunk-1-2.png" width="624" /><img src="Projects_files/figure-html5/unnamed-chunk-1-3.png" width="624" /><img src="Projects_files/figure-html5/unnamed-chunk-1-4.png" width="624" /><img src="Projects_files/figure-html5/unnamed-chunk-1-5.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/car/man/outlierTest.html'>outlierTest</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span> <span class='co'># Bonferroni outlier test</span>
+</code></pre>
+</div>
+<pre><code>No Studentized residuals with Bonferroni p &lt; 0.05
+Largest |rstudent|:
+       rstudent unadjusted p-value Bonferroni p
+Nevada 2.991931          0.0045772      0.22886</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/car/man/influencePlot.html'>influencePlot</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span> <span class='co'># Regression Influence</span>
+</code></pre>
+</div>
+<p><img src="Projects_files/figure-html5/unnamed-chunk-1-6.png" width="624" /></p>
+<pre><code>                StudRes       Hat      CookD
+Alaska        1.3519482 0.4526362 0.24725649
+Hawaii       -0.3504961 0.4037481 0.01414625
+Nevada        2.9919305 0.1580994 0.23728729
+North Dakota -2.1814462 0.1245126 0.10392049</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/sort.html'>sort</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/residuals.html'>residuals</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># Nevada has highest residual value 7.6</span>
+</code></pre>
+</div>
+<pre><code>  North Dakota    Connecticut  Massachusetts   Rhode Island 
+    -4.6351037     -3.9508817     -3.9321050     -3.8769752 
+     Minnesota           Iowa      Wisconsin     New Jersey 
+    -3.0941730     -2.5920895     -2.5690196     -2.4454261 
+  Pennsylvania      Louisiana       Nebraska   South Dakota 
+    -2.4006150     -2.3679373     -1.7603972     -1.4014880 
+        Oregon          Texas    Mississippi        Arizona 
+    -1.1767318     -1.1414346     -1.0590364     -0.9920987 
+      Oklahoma  West Virginia     Washington       Arkansas 
+    -0.9887473     -0.8078434     -0.8070507     -0.6997168 
+        Hawaii         Kansas  New Hampshire           Ohio 
+    -0.6467861     -0.6016978     -0.5238584     -0.3911226 
+         Maine       New York South Carolina     California 
+    -0.3718196     -0.1769995      0.1733659      0.2118959 
+          Utah          Idaho       Delaware        Montana 
+     0.3349708      0.8801093      0.8827238      0.9677768 
+       Indiana North Carolina       Colorado      Tennessee 
+     1.0284071      1.1221828      1.1465536      1.1588588 
+    New Mexico       Virginia        Alabama       Illinois 
+     1.3944265      1.7243861      1.8994800      1.9118831 
+      Kentucky         Alaska       Maryland        Florida 
+     2.0421557      2.3444490      2.4906459      2.5579925 
+       Vermont        Wyoming       Missouri        Georgia 
+     2.6700388      2.7599325      2.9219468      3.3624239 
+      Michigan         Nevada 
+     3.4473389      5.9772102 </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>states</span> <span class='op'>&lt;-</span> <span class='va'>states</span><span class='op'>[</span><span class='op'>!</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/row.names.html'>row.names</a></span><span class='op'>(</span><span class='va'>states</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'Nevada'</span>,<span class='st'>'Alaska'</span><span class='op'>)</span><span class='op'>)</span>,<span class='op'>]</span>
+<span class='va'>lm1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>Murder</span><span class='op'>~</span><span class='va'>.</span> , data<span class='op'>=</span><span class='va'>states</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+Call:
+lm(formula = Murder ~ ., data = states)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.5237 -1.4830 -0.4602  1.3352  4.0738 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  1.058e+01  4.187e+00   2.528 0.015221 *  
+Population   3.105e-04  7.836e-05   3.962 0.000275 ***
+Illiteracy   2.858e+00  8.322e-01   3.435 0.001326 ** 
+Income      -1.580e-03  7.372e-04  -2.143 0.037832 *  
+Frost       -1.163e-02  8.820e-03  -1.319 0.194165    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 2.099 on 43 degrees of freedom
+Multiple R-squared:  0.7012,    Adjusted R-squared:  0.6734 
+F-statistic: 25.23 on 4 and 43 DF,  p-value: 8.435e-11</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="Projects_files/figure-html5/unnamed-chunk-1-7.png" width="624" /><img src="Projects_files/figure-html5/unnamed-chunk-1-8.png" width="624" /><img src="Projects_files/figure-html5/unnamed-chunk-1-9.png" width="624" /><img src="Projects_files/figure-html5/unnamed-chunk-1-10.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-forge.r-project.org/projects/car/'>car</a></span><span class='op'>)</span>; 
+<span class='fu'><a href='https://rdrr.io/pkg/car/man/scatterplotMatrix.html'>scatterplotMatrix</a></span><span class='op'>(</span><span class='va'>states</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="Projects_files/figure-html5/unnamed-chunk-1-11.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/car/man/qqPlot.html'>qqPlot</a></span><span class='op'>(</span><span class='va'>lm1</span>,simulate <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span> <span class='co'>#when simulate=T , 95% confidence envelope is produced using parametric bootstrap</span>
+</code></pre>
+</div>
+<p><img src="Projects_files/figure-html5/unnamed-chunk-1-12.png" width="624" /></p>
+<pre><code>Michigan  Wyoming 
+      21       48 </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/car/man/avPlots.html'>avPlots</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="Projects_files/figure-html5/unnamed-chunk-1-13.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/car/man/influencePlot.html'>influencePlot</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="Projects_files/figure-html5/unnamed-chunk-1-14.png" width="624" /></p>
+<pre><code>             StudRes        Hat      CookD
+California -1.009826 0.35728000 0.11332113
+Hawaii     -1.252901 0.26209552 0.11005411
+Michigan    2.076071 0.05866864 0.04988512
+Wyoming     1.887199 0.07068381 0.05113191</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/car/man/scatterplot.html'>scatterplot</a></span><span class='op'>(</span><span class='va'>Murder</span> <span class='op'>~</span> <span class='va'>Illiteracy</span>  ,data<span class='op'>=</span><span class='va'>states</span>,spread<span class='op'>=</span><span class='cn'>F</span>, lty.smooth<span class='op'>=</span><span class='fl'>2</span>,pch<span class='op'>=</span><span class='fl'>19</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="Projects_files/figure-html5/unnamed-chunk-1-15.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>##INDEPENDENCE OF ERRORS (AUTOCORRELATED) -use durbin watson test</span>
+<span class='fu'><a href='https://rdrr.io/pkg/car/man/durbinWatsonTest.html'>durbinWatsonTest</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code> lag Autocorrelation D-W Statistic p-value
+   1      -0.2480309       2.36422   0.196
+ Alternative hypothesis: rho != 0</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># the non-sig value 0.24 suggests a lack of autocorrelation, and conversely independence of errors</span>
+<span class='co'># so the model is good. This test is best for time interval data since closer in time data correlates</span>
+<span class='va'>lm2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span> <span class='op'>(</span><span class='va'>Murder</span> <span class='op'>~</span> <span class='va'>.</span> , data<span class='op'>=</span><span class='va'>states</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/car/man/crPlots.html'>crPlots</a></span><span class='op'>(</span><span class='va'>lm2</span><span class='op'>)</span> <span class='co'># the model is linear; non-linearity in any one plot suggests including log or polynomial components</span>
+</code></pre>
+</div>
+<img src="Projects_files/figure-html5/unnamed-chunk-1-16.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/car/man/ncvTest.html'>ncvTest</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Non-constant Variance Score Test 
+Variance formula: ~ fitted.values 
+Chisquare = 0.6485252, Df = 1, p = 0.42064</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># the non-sig p = 0.42 suggests that you have met the constant variance assumption</span>
+<span class='co'># the above tests  homoscedasticity ; hence heteroscedasticity assumption is satisfied</span>
+<span class='fu'><a href='https://rdrr.io/pkg/car/man/spreadLevelPlot.html'>spreadLevelPlot</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="Projects_files/figure-html5/unnamed-chunk-1-17.png" width="624" /></p>
+<pre><code>
+Suggested power transformation:  1.335757 </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># the random points around the horizontal line of best fit suggest constant error variance</span>
+<span class='co'># if you'd voileted the assumption, you'd expect non-horizontal line</span>
+<span class='co'># the power transformation 1.33 stabilizes the non-constant error variance</span>
+<span class='co'># if you'd got .5 instead of 1.2, then using sqrt(Y) instead of Y might lead to model that satisfied homoscedasticity</span>
+
+<span class='co'># GOLBAL VALIDATION OF LINEAR MODEL ASSUMPTION </span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>gvlma</span><span class='op'>)</span>
+<span class='va'>gv</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/gvlma/man/gvlma.html'>gvlma</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>gv</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+Call:
+lm(formula = Murder ~ ., data = states)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.5237 -1.4830 -0.4602  1.3352  4.0738 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  1.058e+01  4.187e+00   2.528 0.015221 *  
+Population   3.105e-04  7.836e-05   3.962 0.000275 ***
+Illiteracy   2.858e+00  8.322e-01   3.435 0.001326 ** 
+Income      -1.580e-03  7.372e-04  -2.143 0.037832 *  
+Frost       -1.163e-02  8.820e-03  -1.319 0.194165    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 2.099 on 43 degrees of freedom
+Multiple R-squared:  0.7012,    Adjusted R-squared:  0.6734 
+F-statistic: 25.23 on 4 and 43 DF,  p-value: 8.435e-11
+
+
+ASSESSMENT OF THE LINEAR MODEL ASSUMPTIONS
+USING THE GLOBAL TEST ON 4 DEGREES-OF-FREEDOM:
+Level of Significance =  0.05 
+
+Call:
+ gvlma(x = lm1) 
+
+                     Value p-value                Decision
+Global Stat        3.12086  0.5378 Assumptions acceptable.
+Skewness           1.43713  0.2306 Assumptions acceptable.
+Kurtosis           1.11038  0.2920 Assumptions acceptable.
+Link Function      0.07398  0.7856 Assumptions acceptable.
+Heteroscedasticity 0.49937  0.4798 Assumptions acceptable.</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># IF p WERE SIG IN GLOBAL STAT E.G. 0.05 YOU WOULD HAVE TO ASSESS THE DATA USING PREVIOUS METHODS DISCUSSED</span>
+
+<span class='co'># evaluating multicollinearity</span>
+<span class='fu'><a href='https://rdrr.io/pkg/car/man/vif.html'>vif</a></span> <span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span> <span class='co'># for this to satisfy sqrt(vif) &gt; 2</span>
+</code></pre>
+</div>
+<pre><code>Population Illiteracy     Income      Frost 
+  1.320117   2.773789   1.766847   2.168384 </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/car/man/vif.html'>vif</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>&gt;</span> <span class='fl'>2</span>
+</code></pre>
+</div>
+<pre><code>Population Illiteracy     Income      Frost 
+     FALSE      FALSE      FALSE      FALSE </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># (all false): this suggests multicollinearity isn't a problem with our predictors</span>
+
+<span class='va'>lm2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>Murder</span> <span class='op'>~</span> <span class='va'>.</span> , data <span class='op'>=</span> <span class='va'>s2</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/car/man/outlierTest.html'>outlierTest</a></span><span class='op'>(</span><span class='va'>lm2</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>       rstudent unadjusted p-value Bonferroni p
+Nevada 3.542929         0.00095088     0.047544</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># the studentized residual should be between -2 and 2 as right hand rule, but its 3.5 and significant</span>
+<span class='co'># outliertest calculates the one largest residual. You must delete it and rerun the test to see others</span>
+<span class='fu'><a href='https://rdrr.io/r/grDevices/x11.html'>x11</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/car/man/avPlots.html'>avPlots</a></span><span class='op'>(</span><span class='va'>lm2</span>, ask<span class='op'>=</span><span class='cn'>F</span>, onepage<span class='op'>=</span><span class='cn'>T</span>, id.method<span class='op'>=</span><span class='st'>'identify'</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="Projects_files/figure-html5/unnamed-chunk-1-18.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>#right click , esc, or click at the plot to change/identify the outliers </span>
+
+<span class='co'>#Another way is ...</span>
+<span class='fu'><a href='https://rdrr.io/pkg/car/man/influencePlot.html'>influencePlot</a></span><span class='op'>(</span><span class='va'>lm2</span>, id.method<span class='op'>=</span><span class='st'>'identify'</span>,sub<span class='op'>=</span><span class='st'>'Circle size is proportional to cooks distance'</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="Projects_files/figure-html5/unnamed-chunk-1-19.png" width="624" /></p>
+<pre><code>                StudRes        Hat       CookD
+Alaska        1.7536917 0.43247319 0.448050997
+California   -0.2761492 0.34087628 0.008052956
+Nevada        3.5429286 0.09508977 0.209915743
+Rhode Island -2.0001631 0.04562377 0.035858963</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>#New York, California, Hawaii, and Washington have high leverage; and Nevada, Alaska, and</span>
+<span class='co'>#Hawaii are influential observations. Leverage --&gt; unsual combinations of predictors &gt; .2 or .3</span>
+
+<span class='co'>#TRANSFORMING PREDICTORS TO A BETTER FIT</span>
+<span class='fu'><a href='https://rdrr.io/pkg/car/man/boxTidwell.html'>boxTidwell</a></span><span class='op'>(</span><span class='va'>weight</span> <span class='op'>~</span> <span class='va'>height</span>, data<span class='op'>=</span><span class='va'>women</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code> MLE of lambda Score Statistic (z)  Pr(&gt;|z|)    
+        4.2008              13.067 &lt; 2.2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+iterations =  2 </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>#suggests that lambda 4.2 or 4, using I(height^4) betters fits the model</span>
+
+<span class='co'>#As you’ve just seen, one approach to dealing with multicollinearity is to fit a different</span>
+<span class='co'>#type of model (ridge regression in this case). If there are outliers and/or influential</span>
+<span class='co'>#observations, you could fit a robust regression model rather than an OLS regression.</span>
+<span class='co'>#If you’ve violated the normality assumption, you can fit a nonparametric regression</span>
+<span class='co'>#model. If there’s significant nonlinearity, you can try a nonlinear regression model. If</span>
+<span class='co'>#you’ve violated the assumptions of independence of errors, you can fit a model that</span>
+<span class='co'>#specifically takes the error structure into account, such as time-series models or multi-</span>
+ <span class='co'># level regression models. Finally, you can turn to generalized linear models to fit a wide</span>
+<span class='co'>#range of models in situations where the assumptions of OLS regression don’t hold.</span>
+
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://www.stats.ox.ac.uk/pub/MASS4/'>MASS</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/MASS/man/stepAIC.html'>stepAIC</a></span><span class='op'>(</span><span class='va'>lm2</span>, direction <span class='op'>=</span> <span class='st'>'backward'</span><span class='op'>)</span> <span class='co'># but</span>
+</code></pre>
+</div>
+<pre><code>Start:  AIC=97.75
+Murder ~ Population + Illiteracy + Income + Frost
+
+             Df Sum of Sq    RSS     AIC
+- Frost       1     0.021 289.19  95.753
+- Income      1     0.057 289.22  95.759
+&lt;none&gt;                    289.17  97.749
+- Population  1    39.238 328.41 102.111
+- Illiteracy  1   144.264 433.43 115.986
+
+Step:  AIC=95.75
+Murder ~ Population + Illiteracy + Income
+
+             Df Sum of Sq    RSS     AIC
+- Income      1     0.057 289.25  93.763
+&lt;none&gt;                    289.19  95.753
+- Population  1    43.658 332.85 100.783
+- Illiteracy  1   236.196 525.38 123.605
+
+Step:  AIC=93.76
+Murder ~ Population + Illiteracy
+
+             Df Sum of Sq    RSS     AIC
+&lt;none&gt;                    289.25  93.763
+- Population  1    48.517 337.76  99.516
+- Illiteracy  1   299.646 588.89 127.311</code></pre>
+<pre><code>
+Call:
+lm(formula = Murder ~ Population + Illiteracy, data = s2)
+
+Coefficients:
+(Intercept)   Population   Illiteracy  
+  1.6515497    0.0002242    4.0807366  </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/MASS/man/stepAIC.html'>stepAIC</a></span><span class='op'>(</span><span class='va'>lm1</span>, direction <span class='op'>=</span> <span class='st'>'backward'</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Start:  AIC=75.9
+Murder ~ Population + Illiteracy + Income + Frost
+
+             Df Sum of Sq    RSS    AIC
+- Frost       1     7.664 197.09 75.799
+&lt;none&gt;                    189.43 75.895
+- Income      1    20.227 209.66 78.765
+- Illiteracy  1    51.966 241.40 85.531
+- Population  1    69.162 258.59 88.835
+
+Step:  AIC=75.8
+Murder ~ Population + Illiteracy + Income
+
+             Df Sum of Sq    RSS     AIC
+&lt;none&gt;                    197.09  75.799
+- Income      1    16.120 213.21  77.573
+- Population  1    82.944 280.04  90.659
+- Illiteracy  1   149.483 346.58 100.891</code></pre>
+<pre><code>
+Call:
+lm(formula = Murder ~ Population + Illiteracy + Income, data = states)
+
+Coefficients:
+(Intercept)   Population   Illiteracy       Income  
+  7.5638451    0.0003323    3.5945824   -0.0013803  </code></pre>
+</div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

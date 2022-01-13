@@ -1,0 +1,33 @@
+---
+title: "SortingApproximately"
+author: "Abid Ali Shaikh"
+date: "12/31/2021"
+output: distill::distill_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### The code below sorts a column by matching names approximately 
+
+```{r sort}
+library(readxl)
+sortApp <- function(filename)
+{
+f <- read_excel(filename) #employee.xlsx
+val2=NULL
+for (i in f$Department)
+{
+  val=agrep(i,f$Department)
+   val2=c(val2,val)
+   
+}
+val2=unique(val2)
+
+f=f[val2,]
+write.csv(f,"e.csv")
+}
+
+```
+

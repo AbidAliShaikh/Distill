@@ -1,0 +1,21 @@
+---
+title: "SCEQ"
+author: "Abid Ali Shaikh"
+date: "1/11/2022"
+output: distill::distill_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(readxl)
+fall <- readxl::read_xlsx("./SCEQ received Viz LMS.xlsx",sheet=2)
+qshorts <- read.csv("")
+ptrn <- grep("(FACEV0)[5-9]|(FACEV1)[0-9]",qshorts)
+sceq <- fall[,!(names(fall) %in% ptrn)]
+facevl <- 
+
+```
+

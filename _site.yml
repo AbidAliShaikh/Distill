@@ -11,4 +11,11 @@ navbar:
       href: Projects.html
     - text: "About"
       href: about.html
+    - text: "Book Exercise"  
+      menu:
+        - text: "Coloring"
+          href: Coloring.html
+        - text: "SortApprox"
+          href: SortApprox.html
+
 output: distill::distill_article
