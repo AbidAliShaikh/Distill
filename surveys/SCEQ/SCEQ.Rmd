@@ -9,13 +9,53 @@ output: distill::distill_article
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+### Intitial Preparation of Data variables
+
 ```{r}
 library(readxl)
 fall <- readxl::read_xlsx("./SCEQ received Viz LMS.xlsx",sheet=2)
-qshorts <- read.csv("")
-ptrn <- grep("(FACEV0)[5-9]|(FACEV1)[0-9]",qshorts)
-sceq <- fall[,!(names(fall) %in% ptrn)]
-facevl <- 
+q <- read.csv("Questionnaires.csv")
+library(dplyr)
+#adding faculty column
+fac <- read.csv("faculty and programs.csv",header=T)
+
+  fall %>%
+    left_join(fac, by = "Programs") -> fall #adding faculty and Department columns 
+
+startQat=5; endQat=48
+
+names(fall)[startQat:endQat] <- q$Qshort[1:44] # ASSIGN SHORT QUESTIONNAIRE NAMES
+
+
+  
+f <- fall %>%
+  mutate_all( as.factor )
+
+for (i in startQat:endQat)
+  f[,i] <- factor(f[,i], levels = c("Strongly Disagree","Disagree","uncertain","Agree","Strongly Agree") )
+  
+fall <- f
+
+ptrn <- grep("(FACEV0)[5-9]|(FACEV1)[0-9]",q$Qshort)
+sceq <- fall[,!(names(fall) %in% ptrn)] # separate SCEQ questionnaires
+facev <- fall [,(names(fall) %in% ptrn)] # separate faculty eval questionnaires
+
+
+  
+
+
 
 ```
+
+
+```{r Plots}
+
+suppressMessages(library(likert))
+
+lik <- likert(sceq[,startQat:endQat])
+
+
+
+```
+
 
