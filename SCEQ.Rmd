@@ -16,16 +16,19 @@ knitr::opts_knit$set(output.dir="docs")
 ```{r}
 library(readxl)
 fall <- readxl::read_xlsx("surveys/SCEQ//SCEQ received Viz LMS.xlsx",sheet=2)
+campusindex<- grep("campus",fall$Programs,ignore.case = T)
 lvls <- c("Strongly Disagree","Disagree","uncertain","Agree","Strongly Agree")
 q <- read.csv("surveys/SCEQ/Questionnaires.csv",stringsAsFactors = F)
 library(dplyr)
 #adding faculty column
+
 fac <- read.csv("surveys/SCEQ/faculty and programs.csv",header=T)
 
   fall %>%
     left_join(fac, by = "Programs") -> fall #adding faculty and Department col
-n<- ncol(fall)
-  fall <- fall[,c(n-1,n,1:(n-2))]
+  
+n<- c(49:50,1:48)
+  fall <- fall[,n]
 startQat=7; endQat=50
 
 names(fall)[startQat:endQat] <- q$Qshort[1:44]# ASSIGN SHORT QUESTIONNAIRE NAMES
@@ -54,9 +57,18 @@ facev <- fall [,(names(fall) %in% ptrn)] # separate faculty eval questionnaires
 
 suppressMessages(library(likert))
 
-lik <- likert(sceq[,names(sceq)%in%q$Qshort])
-likert.heat.plot(lik,centered=F,high.color = "green",low.color = 'yellow',text.size = 3)
+lik <- likert(sceq[-campusindex,names(sceq)%in%q$Qshort])
+likert.heat.plot(lik,centered=F,high.color = "darkgreen",low.color = 'yellow',text.size = 3)+ggtitle("Students ......Campus Jamshoro")
 
+lik <- likert(sceq[campusindex,names(sceq)%in%q$Qshort])
+likert.heat.plot(lik,centered=F,high.color = "darkgreen",low.color = 'yellow',text.size = 3)+ggtitle("Students ......SubCampuses")
+
+for (i in unique(sceq$Programs[campusindex])){
+  
+  lik <- likert(sceq[fall$Programs==i, names(sceq) %in% q$Qshort])
+  likert.heat.plot(lik)+ggtitle(i)
+  #print(sapply(sceq$Programs[campusindex],nlevels))
+}
 
 ```
 
