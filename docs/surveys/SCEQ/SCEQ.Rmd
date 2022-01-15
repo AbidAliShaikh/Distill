@@ -14,29 +14,29 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library(readxl)
 fall <- readxl::read_xlsx("./SCEQ received Viz LMS.xlsx",sheet=2)
-q <- read.csv("Questionnaires.csv")
+lvls <- c("Strongly Disagree","Disagree","uncertain","Agree","Strongly Agree")
+q <- read.csv("Questionnaires.csv",stringsAsFactors = F)
 library(dplyr)
 #adding faculty column
 fac <- read.csv("faculty and programs.csv",header=T)
 
   fall %>%
-    left_join(fac, by = "Programs") -> fall #adding faculty and Department columns 
+    left_join(fac, by = "Programs") -> fall #adding faculty and Department col
+n<- ncol(fall)
+  fall <- fall[,c(n-1,n,1:(n-2))]
+startQat=7; endQat=50
 
-startQat=5; endQat=48
+names(fall)[startQat:endQat] <- q$Qshort[1:44]# ASSIGN SHORT QUESTIONNAIRE NAMES
 
-names(fall)[startQat:endQat] <- q$Qshort[1:44] # ASSIGN SHORT QUESTIONNAIRE NAMES
-
-
-  
-f <- fall %>%
-  mutate_all( as.factor )
-
+fall <- fall %>%
+  mutate_all( as.factor ) 
+fall <- data.frame(fall)
 for (i in startQat:endQat)
-  f[,i] <- factor(f[,i], levels = c("Strongly Disagree","Disagree","uncertain","Agree","Strongly Agree") )
+  fall[,i] <- factor(fall[,i], levels= lvls )
   
-fall <- f
 
-ptrn <- grep("(FACEV0)[5-9]|(FACEV1)[0-9]",q$Qshort)
+
+ptrn <- grep("(FACEV0)[5-9]|(FACEV1)[0-9]",q$Qshort, value=T)
 sceq <- fall[,!(names(fall) %in% ptrn)] # separate SCEQ questionnaires
 facev <- fall [,(names(fall) %in% ptrn)] # separate faculty eval questionnaires
 
@@ -52,8 +52,8 @@ facev <- fall [,(names(fall) %in% ptrn)] # separate faculty eval questionnaires
 
 suppressMessages(library(likert))
 
-lik <- likert(sceq[,startQat:endQat])
-
+lik <- likert(sceq[,names(sceq)%in%q$Qshort])
+likert.heat.plot(lik,centered=F,ordered=T)
 
 
 ```

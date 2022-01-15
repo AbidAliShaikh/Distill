@@ -2081,6 +2081,7 @@ Book Exercise
 <div class="nav-dropdown-content">
 <a href="Coloring.html">Coloring</a>
 <a href="SortApprox.html">SortApprox</a>
+<a href="SCEQ.html">SCEQ</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2155,7 +2156,7 @@ TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
   15 
 TRUE </code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>height</span>,<span class='va'>weight</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>height</span>,<span class='va'>weight</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span>; <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2188,7 +2189,7 @@ F-statistic:  1433 on 1 and 13 DF,  p-value: 1.091e-14</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># F Statics ....</span>
 <span class='va'>lm2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>weight</span> <span class='op'>~</span> <span class='va'>height</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/AsIs.html'>I</a></span><span class='op'>(</span><span class='va'>height</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span> <span class='co'>#Quadratic regression</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>height</span>,<span class='va'>weight</span><span class='op'>)</span>; 
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>height</span>,<span class='va'>weight</span><span class='op'>)</span>; 
 <span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span><span class='op'>(</span><span class='va'>height</span>, <span class='fu'><a href='https://rdrr.io/r/stats/fitted.values.html'>fitted</a></span><span class='op'>(</span><span class='va'>lm2</span><span class='op'>)</span>,lty<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2233,7 +2234,7 @@ F-statistic: 1.139e+04 on 2 and 12 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span class='co'>#in general an nth degree polynomial produces n-1 bends</span>
 
 <span class='va'>lm3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>weight</span> <span class='op'>~</span> <span class='va'>height</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/AsIs.html'>I</a></span><span class='op'>(</span><span class='va'>height</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>+</span><span class='fu'><a href='https://rdrr.io/r/base/AsIs.html'>I</a></span><span class='op'>(</span><span class='va'>height</span><span class='op'>^</span><span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span> <span class='co'>#cubic regression</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>height</span>,<span class='va'>weight</span><span class='op'>)</span>; 
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>height</span>,<span class='va'>weight</span><span class='op'>)</span>; 
 <span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span><span class='op'>(</span><span class='va'>height</span>, <span class='fu'><a href='https://rdrr.io/r/stats/fitted.values.html'>fitted</a></span><span class='op'>(</span><span class='va'>lm3</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2348,7 +2349,7 @@ Residual standard error: 2.366 on 44 degrees of freedom
 Multiple R-squared:  0.6312,    Adjusted R-squared:  0.5893 
 F-statistic: 15.06 on 5 and 44 DF,  p-value: 1.296e-08</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span>
 </code></pre>
 </div>
 <img src="Projects_files/figure-html5/unnamed-chunk-1-2.png" width="624" /><img src="Projects_files/figure-html5/unnamed-chunk-1-3.png" width="624" /><img src="Projects_files/figure-html5/unnamed-chunk-1-4.png" width="624" /><img src="Projects_files/figure-html5/unnamed-chunk-1-5.png" width="624" />
@@ -2428,7 +2429,7 @@ Residual standard error: 2.099 on 43 degrees of freedom
 Multiple R-squared:  0.7012,    Adjusted R-squared:  0.6734 
 F-statistic: 25.23 on 4 and 43 DF,  p-value: 8.435e-11</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span>
 </code></pre>
 </div>
 <img src="Projects_files/figure-html5/unnamed-chunk-1-7.png" width="624" /><img src="Projects_files/figure-html5/unnamed-chunk-1-8.png" width="624" /><img src="Projects_files/figure-html5/unnamed-chunk-1-9.png" width="624" /><img src="Projects_files/figure-html5/unnamed-chunk-1-10.png" width="624" />
@@ -2471,7 +2472,7 @@ Wyoming     1.887199 0.07068381 0.05113191</code></pre>
 </code></pre>
 </div>
 <pre><code> lag Autocorrelation D-W Statistic p-value
-   1      -0.2480309       2.36422   0.196
+   1      -0.2480309       2.36422   0.182
  Alternative hypothesis: rho != 0</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># the non-sig value 0.24 suggests a lack of autocorrelation, and conversely independence of errors</span>

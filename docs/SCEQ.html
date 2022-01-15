@@ -87,30 +87,30 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>My Distill Website: SortingApproximately</title>
+  <title>My Distill Website: SCEQ</title>
 
 
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2021-12-31"/>
-  <meta property="article:created" itemprop="dateCreated" content="2021-12-31"/>
+  <meta property="article:published" itemprop="datePublished" content="2022-01-11"/>
+  <meta property="article:created" itemprop="dateCreated" content="2022-01-11"/>
   <meta name="article:author" content="Abid Ali Shaikh"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="My Distill Website: SortingApproximately"/>
+  <meta property="og:title" content="My Distill Website: SCEQ"/>
   <meta property="og:type" content="article"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="My Distill Website"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="My Distill Website: SortingApproximately"/>
+  <meta property="twitter:title" content="My Distill Website: SCEQ"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["SortingApproximately"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Abid Ali Shaikh"]}]}]},{"type":"character","attributes":{},"value":["12/31/2021"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["SCEQ"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Abid Ali Shaikh"]}]}]},{"type":"character","attributes":{},"value":["1/11/2022"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2058,7 +2058,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"SortingApproximately","authors":[{"author":"Abid Ali Shaikh","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-12-31T00:00:00.000+05:00","citationText":"Shaikh, 2021"}
+{"title":"SCEQ","authors":[{"author":"Abid Ali Shaikh","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-01-11T00:00:00.000+05:00","citationText":"Shaikh, 2022"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2093,7 +2093,7 @@ Book Exercise
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>SortingApproximately</h1>
+<h1>SCEQ</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
 
@@ -2103,31 +2103,52 @@ Book Exercise
   
   Abid Ali Shaikh
   
-<br/>12/31/2021
+<br/>1/11/2022
 </div>
 
 <div class="d-article">
-<h3 id="the-code-below-sorts-a-column-by-matching-names-approximately">The code below sorts a column by matching names approximately</h3>
+<h3 id="intitial-preparation-of-data-variables">Intitial Preparation of Data variables</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readxl.tidyverse.org'>readxl</a></span><span class='op'>)</span>
-<span class='va'>sortApp</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>filename</span><span class='op'>)</span>
-<span class='op'>{</span>
-<span class='va'>f</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_excel</a></span><span class='op'>(</span><span class='va'>filename</span><span class='op'>)</span> <span class='co'>#employee.xlsx</span>
-<span class='va'>val2</span><span class='op'>=</span><span class='cn'>NULL</span>
-<span class='kw'>for</span> <span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='va'>f</span><span class='op'>$</span><span class='va'>Department</span><span class='op'>)</span>
-<span class='op'>{</span>
-  <span class='va'>val</span><span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/agrep.html'>agrep</a></span><span class='op'>(</span><span class='va'>i</span>,<span class='va'>f</span><span class='op'>$</span><span class='va'>Department</span><span class='op'>)</span>
-   <span class='va'>val2</span><span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>val2</span>,<span class='va'>val</span><span class='op'>)</span>
-   
-<span class='op'>}</span>
-<span class='va'>val2</span><span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>val2</span><span class='op'>)</span>
+<span class='va'>fall</span> <span class='op'>&lt;-</span> <span class='fu'>readxl</span><span class='fu'>::</span><span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_xlsx</a></span><span class='op'>(</span><span class='st'>"surveys/SCEQ//SCEQ received Viz LMS.xlsx"</span>,sheet<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
+<span class='va'>lvls</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Strongly Disagree"</span>,<span class='st'>"Disagree"</span>,<span class='st'>"uncertain"</span>,<span class='st'>"Agree"</span>,<span class='st'>"Strongly Agree"</span><span class='op'>)</span>
+<span class='va'>q</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"surveys/SCEQ/Questionnaires.csv"</span>,stringsAsFactors <span class='op'>=</span> <span class='cn'>F</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+<span class='co'>#adding faculty column</span>
+<span class='va'>fac</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"surveys/SCEQ/faculty and programs.csv"</span>,header<span class='op'>=</span><span class='cn'>T</span><span class='op'>)</span>
 
-<span class='va'>f</span><span class='op'>=</span><span class='va'>f</span><span class='op'>[</span><span class='va'>val2</span>,<span class='op'>]</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/write.table.html'>write.csv</a></span><span class='op'>(</span><span class='va'>f</span>,<span class='st'>"e.csv"</span><span class='op'>)</span>
-<span class='op'>}</span>
+  <span class='va'>fall</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>fac</span>, by <span class='op'>=</span> <span class='st'>"Programs"</span><span class='op'>)</span> <span class='op'>-&gt;</span> <span class='va'>fall</span> <span class='co'>#adding faculty and Department col</span>
+<span class='va'>n</span><span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span><span class='op'>(</span><span class='va'>fall</span><span class='op'>)</span>
+  <span class='va'>fall</span> <span class='op'>&lt;-</span> <span class='va'>fall</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>n</span><span class='op'>-</span><span class='fl'>1</span>,<span class='va'>n</span>,<span class='fl'>1</span><span class='op'>:</span><span class='op'>(</span><span class='va'>n</span><span class='op'>-</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span><span class='op'>]</span>
+<span class='va'>startQat</span><span class='op'>=</span><span class='fl'>7</span>; <span class='va'>endQat</span><span class='op'>=</span><span class='fl'>50</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>fall</span><span class='op'>)</span><span class='op'>[</span><span class='va'>startQat</span><span class='op'>:</span><span class='va'>endQat</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='va'>q</span><span class='op'>$</span><span class='va'>Qshort</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>44</span><span class='op'>]</span><span class='co'># ASSIGN SHORT QUESTIONNAIRE NAMES</span>
+
+<span class='va'>fall</span> <span class='op'>&lt;-</span> <span class='va'>fall</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate_all.html'>mutate_all</a></span><span class='op'>(</span> <span class='va'>as.factor</span> <span class='op'>)</span> 
+<span class='va'>fall</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='va'>fall</span><span class='op'>)</span>
+<span class='kw'>for</span> <span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='va'>startQat</span><span class='op'>:</span><span class='va'>endQat</span><span class='op'>)</span>
+  <span class='va'>fall</span><span class='op'>[</span>,<span class='va'>i</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>fall</span><span class='op'>[</span>,<span class='va'>i</span><span class='op'>]</span>, levels<span class='op'>=</span> <span class='va'>lvls</span> <span class='op'>)</span>
+  
+
+
+<span class='va'>ptrn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grep</a></span><span class='op'>(</span><span class='st'>"(FACEV0)[5-9]|(FACEV1)[0-9]"</span>,<span class='va'>q</span><span class='op'>$</span><span class='va'>Qshort</span>, value<span class='op'>=</span><span class='cn'>T</span><span class='op'>)</span>
+<span class='va'>sceq</span> <span class='op'>&lt;-</span> <span class='va'>fall</span><span class='op'>[</span>,<span class='op'>!</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>fall</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='va'>ptrn</span><span class='op'>)</span><span class='op'>]</span> <span class='co'># separate SCEQ questionnaires</span>
+<span class='va'>facev</span> <span class='op'>&lt;-</span> <span class='va'>fall</span> <span class='op'>[</span>,<span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>fall</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='va'>ptrn</span><span class='op'>)</span><span class='op'>]</span> <span class='co'># separate faculty eval questionnaires</span>
 </code></pre>
 </div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressMessages</a></span><span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://jason.bryer.org/likert'>likert</a></span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='va'>lik</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/likert/man/likert.html'>likert</a></span><span class='op'>(</span><span class='va'>sceq</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>sceq</span><span class='op'>)</span><span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span><span class='va'>q</span><span class='op'>$</span><span class='va'>Qshort</span><span class='op'>]</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/likert/man/likert.heat.plot.html'>likert.heat.plot</a></span><span class='op'>(</span><span class='va'>lik</span>,centered<span class='op'>=</span><span class='cn'>F</span>,high.color <span class='op'>=</span> <span class='st'>"green"</span>,low.color <span class='op'>=</span> <span class='st'>'yellow'</span>,text.size <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="SCEQ_files/figure-html5/Plots-1.png" width="624" /></p>
 </div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->

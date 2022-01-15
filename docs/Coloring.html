@@ -2081,6 +2081,7 @@ Book Exercise
 <div class="nav-dropdown-content">
 <a href="Coloring.html">Coloring</a>
 <a href="SortApprox.html">SortApprox</a>
+<a href="SCEQ.html">SCEQ</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2248,8 +2249,8 @@ Book Exercise
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://colorspace.R-Forge.R-project.org/'>colorspace</a></span><span class='op'>)</span>
 
-<span class='va'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://colorspace.R-Forge.R-project.org//reference/choose_palette.html'>choose_palette</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>8</span><span class='op'>)</span>,col<span class='op'>=</span><span class='fu'>p</span><span class='op'>(</span><span class='fl'>8</span><span class='op'>)</span><span class='op'>)</span>
+<span class='co'>#p &lt;- choose_palette()</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>8</span><span class='op'>)</span>,col<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/grDevices/palettes.html'>rainbow</a></span><span class='op'>(</span><span class='fl'>8</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="Coloring_files/figure-html5/coloring1-1.png" width="624" /></p>
@@ -2262,7 +2263,7 @@ Book Exercise
 <span class='va'>g1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>s</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>xv</span>,<span class='va'>ys</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method<span class='op'>=</span><span class='st'>'lm'</span>,size<span class='op'>=</span><span class='fl'>3</span>,colour<span class='op'>=</span><span class='st'>'blue'</span><span class='op'>)</span>
 <span class='va'>g2</span> <span class='op'>&lt;-</span> <span class='va'>g1</span><span class='op'>+</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>colour<span class='op'>=</span><span class='st'>'skyblue'</span>,alpha<span class='op'>=</span><span class='fl'>1</span><span class='op'>/</span><span class='fl'>2</span><span class='op'>)</span>
 
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>g2</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>g2</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="Coloring_files/figure-html5/coloring2-1.png" width="624" /></p>

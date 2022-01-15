@@ -17,5 +17,7 @@ navbar:
           href: Coloring.html
         - text: "SortApprox"
           href: SortApprox.html
+        - text: "SCEQ"
+          href: SCEQ.html
 
 output: distill::distill_article

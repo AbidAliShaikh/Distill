@@ -1,0 +1,63 @@
+---
+title: "SCEQ"
+author: "Abid Ali Shaikh"
+date: "1/11/2022"
+output: distill::distill_article
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(output.dir="docs")
+```
+
+### Intitial Preparation of Data variables
+
+```{r}
+library(readxl)
+fall <- readxl::read_xlsx("surveys/SCEQ//SCEQ received Viz LMS.xlsx",sheet=2)
+lvls <- c("Strongly Disagree","Disagree","uncertain","Agree","Strongly Agree")
+q <- read.csv("surveys/SCEQ/Questionnaires.csv",stringsAsFactors = F)
+library(dplyr)
+#adding faculty column
+fac <- read.csv("surveys/SCEQ/faculty and programs.csv",header=T)
+
+  fall %>%
+    left_join(fac, by = "Programs") -> fall #adding faculty and Department col
+n<- ncol(fall)
+  fall <- fall[,c(n-1,n,1:(n-2))]
+startQat=7; endQat=50
+
+names(fall)[startQat:endQat] <- q$Qshort[1:44]# ASSIGN SHORT QUESTIONNAIRE NAMES
+
+fall <- fall %>%
+  mutate_all( as.factor ) 
+fall <- data.frame(fall)
+for (i in startQat:endQat)
+  fall[,i] <- factor(fall[,i], levels= lvls )
+  
+
+
+ptrn <- grep("(FACEV0)[5-9]|(FACEV1)[0-9]",q$Qshort, value=T)
+sceq <- fall[,!(names(fall) %in% ptrn)] # separate SCEQ questionnaires
+facev <- fall [,(names(fall) %in% ptrn)] # separate faculty eval questionnaires
+
+
+  
+
+
+
+```
+
+
+```{r Plots}
+
+suppressMessages(library(likert))
+
+lik <- likert(sceq[,names(sceq)%in%q$Qshort])
+likert.heat.plot(lik,centered=F,high.color = "green",low.color = 'yellow',text.size = 3)
+
+
+```
+
+
