@@ -20,7 +20,7 @@ campusindex<- grep("campus",fall$Programs,ignore.case = T)
 lvls <- c("Strongly Disagree","Disagree","uncertain","Agree","Strongly Agree")
 q <- read.csv("surveys/SCEQ/Questionnaires.csv",stringsAsFactors = F)
 library(dplyr)
-#adding faculty column
+
 
 fac <- read.csv("surveys/SCEQ/faculty and programs.csv",header=T)
 
@@ -63,10 +63,12 @@ likert.heat.plot(lik,centered=F,high.color = "darkgreen",low.color = 'yellow',te
 lik <- likert(sceq[campusindex,names(sceq)%in%q$Qshort])
 likert.heat.plot(lik,centered=F,high.color = "darkgreen",low.color = 'yellow',text.size = 3)+ggtitle("Students ......SubCampuses")
 
+# All Sub Campuses heat plots
+nresp <- table(as.character(sceq$Programs[campusindex]))
 for (i in unique(sceq$Programs[campusindex])){
   
   lik <- likert(sceq[fall$Programs==i, names(sceq) %in% q$Qshort])
-  likert.heat.plot(lik)+ggtitle(i)
+  print(likert.heat.plot(lik)+ggtitle(i,paste("number of responses:",nresp[[i]])))
   #print(sapply(sceq$Programs[campusindex],nlevels))
 }
 
