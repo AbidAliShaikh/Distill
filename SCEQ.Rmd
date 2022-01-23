@@ -9,11 +9,12 @@ output: distill::distill_article
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_knit$set(output.dir="docs")
+source("Row_means.R")
 ```
 
 ### Intitial Preparation of Data variables
 
-```{r}
+```{r initialize sceq}
 library(readxl)
 fall <- readxl::read_xlsx("surveys/SCEQ//SCEQ received Viz LMS.xlsx",sheet=2)
 campusindex<- grep("campus",fall$Programs,ignore.case = T)
@@ -22,8 +23,8 @@ q <- read.csv("surveys/SCEQ/Questionnaires.csv",stringsAsFactors = F)
 library(dplyr)
 
 
-fac <- read.csv("surveys/SCEQ/faculty and programs.csv",header=T)
-
+fac <- read.csv("surveys/SCEQ/faculty and programs.csv",header=T,colClasses = "character")
+fac$Programs <- toupper(fac$Programs)
   fall %>%
     left_join(fac, by = "Programs") -> fall #adding faculty and Department col
   
@@ -53,7 +54,7 @@ facev <- fall [,(names(fall) %in% ptrn)] # separate faculty eval questionnaires
 ```
 
 
-```{r Plots}
+```{r LikertPlots}
 
 suppressMessages(library(likert))
 
@@ -75,17 +76,28 @@ for (i in unique(sceq$Programs[campusindex])){
 ```
 
 
-```{r}
-l=1;s=sceq
-s=sapply(s[,names(s)%in%q$Qshort],as.character)
-for (i in lvls ){
-  s[s==i] <- l
-  l=l+1
-}
+```{r correlogram}
+b <- cor(Row_means(sceq))
+library(ggcorrplot)
+ggcorrplot(b, hc.order = TRUE, 
+                   type = "lower", 
+                   lab = TRUE, 
+                   lab_size = 3, 
+                   method="circle", 
+                   colors = c("cyan", "white", "magenta"), 
+                   title= " ",
+                   ggtheme=theme_bw)
+#play with subsetting of data 
 
-s=apply(s,2,as.integer)
+```
 
 
+```{r bwplot}
+library(lattice)
+d<- data.frame(Row_means(sceq))
+dsceq <- cbind(sceq[,!(names(sceq)%in%q$Qshort)],d)
+molten<- reshape2::melt(dsceq)
+bwplot(data=molten, molten$value ~ molten$variable| molten$Departments)
 
 
 ```

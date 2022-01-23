@@ -2118,8 +2118,8 @@ Book Exercise
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
 
 
-<span class='va'>fac</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"surveys/SCEQ/faculty and programs.csv"</span>,header<span class='op'>=</span><span class='cn'>T</span><span class='op'>)</span>
-
+<span class='va'>fac</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"surveys/SCEQ/faculty and programs.csv"</span>,header<span class='op'>=</span><span class='cn'>T</span>,colClasses <span class='op'>=</span> <span class='st'>"character"</span><span class='op'>)</span>
+<span class='va'>fac</span><span class='op'>$</span><span class='va'>Programs</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/chartr.html'>toupper</a></span><span class='op'>(</span><span class='va'>fac</span><span class='op'>$</span><span class='va'>Programs</span><span class='op'>)</span>
   <span class='va'>fall</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
     <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>fac</span>, by <span class='op'>=</span> <span class='st'>"Programs"</span><span class='op'>)</span> <span class='op'>-&gt;</span> <span class='va'>fall</span> <span class='co'>#adding faculty and Department col</span>
   
@@ -2151,13 +2151,13 @@ Book Exercise
 <span class='fu'><a href='https://rdrr.io/pkg/likert/man/likert.heat.plot.html'>likert.heat.plot</a></span><span class='op'>(</span><span class='va'>lik</span>,centered<span class='op'>=</span><span class='cn'>F</span>,high.color <span class='op'>=</span> <span class='st'>"darkgreen"</span>,low.color <span class='op'>=</span> <span class='st'>'yellow'</span>,text.size <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span><span class='op'>+</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ggtitle</a></span><span class='op'>(</span><span class='st'>"Students ......Campus Jamshoro"</span><span class='op'>)</span>
 </code></pre>
 </div>
-<img src="SCEQ_files/figure-html5/Plots-1.png" width="624" />
+<img src="SCEQ_files/figure-html5/LikertPlots-1.png" width="624" />
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>lik</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/likert/man/likert.html'>likert</a></span><span class='op'>(</span><span class='va'>sceq</span><span class='op'>[</span><span class='va'>campusindex</span>,<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>sceq</span><span class='op'>)</span><span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span><span class='va'>q</span><span class='op'>$</span><span class='va'>Qshort</span><span class='op'>]</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/pkg/likert/man/likert.heat.plot.html'>likert.heat.plot</a></span><span class='op'>(</span><span class='va'>lik</span>,centered<span class='op'>=</span><span class='cn'>F</span>,high.color <span class='op'>=</span> <span class='st'>"darkgreen"</span>,low.color <span class='op'>=</span> <span class='st'>'yellow'</span>,text.size <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span><span class='op'>+</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ggtitle</a></span><span class='op'>(</span><span class='st'>"Students ......SubCampuses"</span><span class='op'>)</span>
 </code></pre>
 </div>
-<img src="SCEQ_files/figure-html5/Plots-2.png" width="624" />
+<img src="SCEQ_files/figure-html5/LikertPlots-2.png" width="624" />
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># All Sub Campuses heat plots</span>
 <span class='va'>nresp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>sceq</span><span class='op'>$</span><span class='va'>Programs</span><span class='op'>[</span><span class='va'>campusindex</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>
@@ -2169,20 +2169,38 @@ Book Exercise
 <span class='op'>}</span>
 </code></pre>
 </div>
-<p><img src="SCEQ_files/figure-html5/Plots-3.png" width="624" /><img src="SCEQ_files/figure-html5/Plots-4.png" width="624" /><img src="SCEQ_files/figure-html5/Plots-5.png" width="624" /><img src="SCEQ_files/figure-html5/Plots-6.png" width="624" /><img src="SCEQ_files/figure-html5/Plots-7.png" width="624" /><img src="SCEQ_files/figure-html5/Plots-8.png" width="624" /></p>
+<p><img src="SCEQ_files/figure-html5/LikertPlots-3.png" width="624" /><img src="SCEQ_files/figure-html5/LikertPlots-4.png" width="624" /><img src="SCEQ_files/figure-html5/LikertPlots-5.png" width="624" /><img src="SCEQ_files/figure-html5/LikertPlots-6.png" width="624" /><img src="SCEQ_files/figure-html5/LikertPlots-7.png" width="624" /><img src="SCEQ_files/figure-html5/LikertPlots-8.png" width="624" /></p>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>l</span><span class='op'>=</span><span class='fl'>1</span>;<span class='va'>s</span><span class='op'>=</span><span class='va'>sceq</span>
-<span class='va'>s</span><span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span><span class='op'>(</span><span class='va'>s</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>s</span><span class='op'>)</span><span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span><span class='va'>q</span><span class='op'>$</span><span class='va'>Qshort</span><span class='op'>]</span>,<span class='va'>as.character</span><span class='op'>)</span>
-<span class='kw'>for</span> <span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='va'>lvls</span> <span class='op'>)</span><span class='op'>{</span>
-  <span class='va'>s</span><span class='op'>[</span><span class='va'>s</span><span class='op'>==</span><span class='va'>i</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='va'>l</span>
-  <span class='va'>l</span><span class='op'>=</span><span class='va'>l</span><span class='op'>+</span><span class='fl'>1</span>
-<span class='op'>}</span>
-
-<span class='va'>s</span><span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/apply.html'>apply</a></span><span class='op'>(</span><span class='va'>s</span>,<span class='fl'>2</span>,<span class='va'>as.integer</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>b</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cor</a></span><span class='op'>(</span><span class='fu'>Row_means</span><span class='op'>(</span><span class='va'>sceq</span><span class='op'>)</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://www.sthda.com/english/wiki/ggcorrplot'>ggcorrplot</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/ggcorrplot/man/ggcorrplot.html'>ggcorrplot</a></span><span class='op'>(</span><span class='va'>b</span>, hc.order <span class='op'>=</span> <span class='cn'>TRUE</span>, 
+                   type <span class='op'>=</span> <span class='st'>"lower"</span>, 
+                   lab <span class='op'>=</span> <span class='cn'>TRUE</span>, 
+                   lab_size <span class='op'>=</span> <span class='fl'>3</span>, 
+                   method<span class='op'>=</span><span class='st'>"circle"</span>, 
+                   colors <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"cyan"</span>, <span class='st'>"white"</span>, <span class='st'>"magenta"</span><span class='op'>)</span>, 
+                   title<span class='op'>=</span> <span class='st'>" "</span>,
+                   ggtheme<span class='op'>=</span><span class='va'>theme_bw</span><span class='op'>)</span>
 </code></pre>
 </div>
+<img src="SCEQ_files/figure-html5/correlogram-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>#play with subsetting of data </span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://lattice.r-forge.r-project.org/'>lattice</a></span><span class='op'>)</span>
+<span class='va'>d</span><span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='fu'>Row_means</span><span class='op'>(</span><span class='va'>sceq</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>dsceq</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='va'>sceq</span><span class='op'>[</span>,<span class='op'>!</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>sceq</span><span class='op'>)</span><span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span><span class='va'>q</span><span class='op'>$</span><span class='va'>Qshort</span><span class='op'>)</span><span class='op'>]</span>,<span class='va'>d</span><span class='op'>)</span>
+<span class='va'>molten</span><span class='op'>&lt;-</span> <span class='fu'>reshape2</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/reshape2/man/melt.html'>melt</a></span><span class='op'>(</span><span class='va'>dsceq</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/lattice/man/xyplot.html'>bwplot</a></span><span class='op'>(</span>data<span class='op'>=</span><span class='va'>molten</span>, <span class='va'>molten</span><span class='op'>$</span><span class='va'>value</span> <span class='op'>~</span> <span class='va'>molten</span><span class='op'>$</span><span class='va'>variable</span><span class='op'>|</span> <span class='va'>molten</span><span class='op'>$</span><span class='va'>Departments</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="SCEQ_files/figure-html5/bwplot-1.png" width="624" /></p>
 </div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
