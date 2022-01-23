@@ -75,3 +75,18 @@ for (i in unique(sceq$Programs[campusindex])){
 ```
 
 
+```{r}
+l=1;s=sceq
+s=sapply(s[,names(s)%in%q$Qshort],as.character)
+for (i in lvls ){
+  s[s==i] <- l
+  l=l+1
+}
+
+s=apply(s,2,as.integer)
+
+
+
+
+```
+

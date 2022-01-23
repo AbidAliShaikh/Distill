@@ -2171,6 +2171,19 @@ Book Exercise
 </div>
 <p><img src="SCEQ_files/figure-html5/Plots-3.png" width="624" /><img src="SCEQ_files/figure-html5/Plots-4.png" width="624" /><img src="SCEQ_files/figure-html5/Plots-5.png" width="624" /><img src="SCEQ_files/figure-html5/Plots-6.png" width="624" /><img src="SCEQ_files/figure-html5/Plots-7.png" width="624" /><img src="SCEQ_files/figure-html5/Plots-8.png" width="624" /></p>
 </div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>l</span><span class='op'>=</span><span class='fl'>1</span>;<span class='va'>s</span><span class='op'>=</span><span class='va'>sceq</span>
+<span class='va'>s</span><span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span><span class='op'>(</span><span class='va'>s</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>s</span><span class='op'>)</span><span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span><span class='va'>q</span><span class='op'>$</span><span class='va'>Qshort</span><span class='op'>]</span>,<span class='va'>as.character</span><span class='op'>)</span>
+<span class='kw'>for</span> <span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='va'>lvls</span> <span class='op'>)</span><span class='op'>{</span>
+  <span class='va'>s</span><span class='op'>[</span><span class='va'>s</span><span class='op'>==</span><span class='va'>i</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='va'>l</span>
+  <span class='va'>l</span><span class='op'>=</span><span class='va'>l</span><span class='op'>+</span><span class='fl'>1</span>
+<span class='op'>}</span>
+
+<span class='va'>s</span><span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/apply.html'>apply</a></span><span class='op'>(</span><span class='va'>s</span>,<span class='fl'>2</span>,<span class='va'>as.integer</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
