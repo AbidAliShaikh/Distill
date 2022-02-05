@@ -96,12 +96,16 @@ ggcorrplot(b, hc.order = TRUE,
 ```{r bwplot}
 library(lattice)
 
+
 m <- Melt(sceq)
 
 m2 <- aggregate(m$value, by=(m[,c(1:5,9)]),FUN=mean)
 bwplot(m2$x ~ m2$Indicator  | m2$Faculties, scales = list(x=list(rot=90)))
+bwplot(m2$x ~ m2$Indicator | m2$Departments,scales=list(x=list(rot=90)))
+# by fac , or by prog or dept etc.
+a<- gmodels::CrossTable(m$Indicator,m$value)
 
-
+mosaicplot(a$t,color = c("darkred","red","yellow","skyblue","blue"),main = "Indicators vs likert response")
 
 ```
 
