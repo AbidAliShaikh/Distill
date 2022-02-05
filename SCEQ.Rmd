@@ -10,6 +10,7 @@ output: distill::distill_article
 knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_knit$set(output.dir="docs")
 source("Row_means.R")
+source("Melt.R")
 ```
 
 ### Intitial Preparation of Data variables
@@ -94,10 +95,12 @@ ggcorrplot(b, hc.order = TRUE,
 
 ```{r bwplot}
 library(lattice)
-d<- data.frame(Row_means(sceq))
-dsceq <- cbind(sceq[,!(names(sceq)%in%q$Qshort)],d)
-molten<- reshape2::melt(dsceq)
-bwplot(data=molten, molten$value ~ molten$variable| molten$Departments)
+
+m <- Melt(sceq)
+
+m2 <- aggregate(m$value, by=(m[,c(1:5,9)]),FUN=mean)
+bwplot(m2$x ~ m2$Indicator  | m2$Faculties, scales = list(x=list(rot=90)))
+
 
 
 ```
