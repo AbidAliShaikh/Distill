@@ -2194,15 +2194,109 @@ Book Exercise
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://lattice.r-forge.r-project.org/'>lattice</a></span><span class='op'>)</span>
-<span class='va'>d</span><span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='fu'>Row_means</span><span class='op'>(</span><span class='va'>sceq</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>dsceq</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='va'>sceq</span><span class='op'>[</span>,<span class='op'>!</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>sceq</span><span class='op'>)</span><span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span><span class='va'>q</span><span class='op'>$</span><span class='va'>Qshort</span><span class='op'>)</span><span class='op'>]</span>,<span class='va'>d</span><span class='op'>)</span>
-<span class='va'>molten</span><span class='op'>&lt;-</span> <span class='fu'>reshape2</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/reshape2/man/melt.html'>melt</a></span><span class='op'>(</span><span class='va'>dsceq</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/pkg/lattice/man/xyplot.html'>bwplot</a></span><span class='op'>(</span>data<span class='op'>=</span><span class='va'>molten</span>, <span class='va'>molten</span><span class='op'>$</span><span class='va'>value</span> <span class='op'>~</span> <span class='va'>molten</span><span class='op'>$</span><span class='va'>variable</span><span class='op'>|</span> <span class='va'>molten</span><span class='op'>$</span><span class='va'>Departments</span><span class='op'>)</span>
+
+
+<span class='va'>m</span> <span class='op'>&lt;-</span> <span class='fu'>Melt</span><span class='op'>(</span><span class='va'>sceq</span><span class='op'>)</span>
+
+<span class='va'>m2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/aggregate.html'>aggregate</a></span><span class='op'>(</span><span class='va'>m</span><span class='op'>$</span><span class='va'>value</span>, by<span class='op'>=</span><span class='op'>(</span><span class='va'>m</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>,<span class='fl'>9</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span>,FUN<span class='op'>=</span><span class='va'>mean</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/lattice/man/xyplot.html'>bwplot</a></span><span class='op'>(</span><span class='va'>m2</span><span class='op'>$</span><span class='va'>x</span> <span class='op'>~</span> <span class='va'>m2</span><span class='op'>$</span><span class='va'>Indicator</span>  <span class='op'>|</span> <span class='va'>m2</span><span class='op'>$</span><span class='va'>Faculties</span>, scales <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>rot<span class='op'>=</span><span class='fl'>90</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="SCEQ_files/figure-html5/bwplot-1.png" width="624" /></p>
+<img src="SCEQ_files/figure-html5/bwplot-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/lattice/man/xyplot.html'>bwplot</a></span><span class='op'>(</span><span class='va'>m2</span><span class='op'>$</span><span class='va'>x</span> <span class='op'>~</span> <span class='va'>m2</span><span class='op'>$</span><span class='va'>Indicator</span> <span class='op'>|</span> <span class='va'>m2</span><span class='op'>$</span><span class='va'>Departments</span>,scales<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>rot<span class='op'>=</span><span class='fl'>90</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
 </div>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<img src="SCEQ_files/figure-html5/bwplot-2.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># by fac , or by prog or dept etc.</span>
+<span class='va'>a</span><span class='op'>&lt;-</span> <span class='fu'>gmodels</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/gmodels/man/CrossTable.html'>CrossTable</a></span><span class='op'>(</span><span class='va'>m</span><span class='op'>$</span><span class='va'>Indicator</span>,<span class='va'>m</span><span class='op'>$</span><span class='va'>value</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+ 
+   Cell Contents
+|-------------------------|
+|                       N |
+| Chi-square contribution |
+|           N / Row Total |
+|           N / Col Total |
+|         N / Table Total |
+|-------------------------|
+
+ 
+Total Observations in Table:  24824 
+
+ 
+             | m$value 
+ m$Indicator |         1 |         2 |         3 |         4 |         5 | Row Total | 
+-------------|-----------|-----------|-----------|-----------|-----------|-----------|
+        ASSE |       113 |        80 |       125 |       968 |      1282 |      2568 | 
+             |     1.281 |     0.056 |     5.867 |     0.308 |     0.621 |           | 
+             |     0.044 |     0.031 |     0.049 |     0.377 |     0.499 |     0.103 | 
+             |     0.093 |     0.101 |     0.083 |     0.105 |     0.106 |           | 
+             |     0.005 |     0.003 |     0.005 |     0.039 |     0.052 |           | 
+-------------|-----------|-----------|-----------|-----------|-----------|-----------|
+         CCO |        97 |        81 |       125 |       909 |      1356 |      2568 | 
+             |     6.549 |     0.016 |     5.867 |     1.846 |     8.279 |           | 
+             |     0.038 |     0.032 |     0.049 |     0.354 |     0.528 |     0.103 | 
+             |     0.080 |     0.102 |     0.083 |     0.099 |     0.112 |           | 
+             |     0.004 |     0.003 |     0.005 |     0.037 |     0.055 |           | 
+-------------|-----------|-----------|-----------|-----------|-----------|-----------|
+         ENV |       230 |       135 |       219 |      1249 |      1591 |      3424 | 
+             |    23.245 |     5.929 |     0.708 |     0.281 |     3.937 |           | 
+             |     0.067 |     0.039 |     0.064 |     0.365 |     0.465 |     0.138 | 
+             |     0.189 |     0.170 |     0.146 |     0.136 |     0.131 |           | 
+             |     0.009 |     0.005 |     0.009 |     0.050 |     0.064 |           | 
+-------------|-----------|-----------|-----------|-----------|-----------|-----------|
+       FACEV |       182 |       131 |       165 |      1144 |      1802 |      3424 | 
+             |     1.240 |     4.214 |     8.484 |    12.101 |    10.085 |           | 
+             |     0.053 |     0.038 |     0.048 |     0.334 |     0.526 |     0.138 | 
+             |     0.150 |     0.165 |     0.110 |     0.124 |     0.149 |           | 
+             |     0.007 |     0.005 |     0.007 |     0.046 |     0.073 |           | 
+-------------|-----------|-----------|-----------|-----------|-----------|-----------|
+        PRAC |       104 |        49 |       122 |       628 |       809 |      1712 | 
+             |     4.873 |     0.606 |     3.327 |     0.055 |     0.876 |           | 
+             |     0.061 |     0.029 |     0.071 |     0.367 |     0.473 |     0.069 | 
+             |     0.086 |     0.062 |     0.081 |     0.068 |     0.067 |           | 
+             |     0.004 |     0.002 |     0.005 |     0.025 |     0.033 |           | 
+-------------|-----------|-----------|-----------|-----------|-----------|-----------|
+          QD |       126 |        82 |       154 |      1012 |      1194 |      2568 | 
+             |     0.001 |     0.000 |     0.009 |     3.926 |     2.880 |           | 
+             |     0.049 |     0.032 |     0.060 |     0.394 |     0.465 |     0.103 | 
+             |     0.104 |     0.103 |     0.103 |     0.110 |     0.098 |           | 
+             |     0.005 |     0.003 |     0.006 |     0.041 |     0.048 |           | 
+-------------|-----------|-----------|-----------|-----------|-----------|-----------|
+         RES |       181 |       127 |       254 |      1342 |      1520 |      3424 | 
+             |     1.074 |     2.791 |    10.724 |     4.335 |    13.842 |           | 
+             |     0.053 |     0.037 |     0.074 |     0.392 |     0.444 |     0.138 | 
+             |     0.149 |     0.160 |     0.169 |     0.146 |     0.125 |           | 
+             |     0.007 |     0.005 |     0.010 |     0.054 |     0.061 |           | 
+-------------|-----------|-----------|-----------|-----------|-----------|-----------|
+         STC |        38 |        46 |       125 |       959 |      1400 |      2568 | 
+             |    61.178 |    15.899 |     5.867 |     0.069 |    16.973 |           | 
+             |     0.015 |     0.018 |     0.049 |     0.373 |     0.545 |     0.103 | 
+             |     0.031 |     0.058 |     0.083 |     0.104 |     0.115 |           | 
+             |     0.002 |     0.002 |     0.005 |     0.039 |     0.056 |           | 
+-------------|-----------|-----------|-----------|-----------|-----------|-----------|
+         TUT |       144 |        63 |       211 |       981 |      1169 |      2568 | 
+             |     2.667 |     4.459 |    20.086 |     0.953 |     5.775 |           | 
+             |     0.056 |     0.025 |     0.082 |     0.382 |     0.455 |     0.103 | 
+             |     0.119 |     0.079 |     0.141 |     0.107 |     0.096 |           | 
+             |     0.006 |     0.003 |     0.008 |     0.040 |     0.047 |           | 
+-------------|-----------|-----------|-----------|-----------|-----------|-----------|
+Column Total |      1215 |       794 |      1500 |      9192 |     12123 |     24824 | 
+             |     0.049 |     0.032 |     0.060 |     0.370 |     0.488 |           | 
+-------------|-----------|-----------|-----------|-----------|-----------|-----------|
+
+ </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/mosaicplot.html'>mosaicplot</a></span><span class='op'>(</span><span class='va'>a</span><span class='op'>$</span><span class='va'>t</span>,color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"darkred"</span>,<span class='st'>"red"</span>,<span class='st'>"yellow"</span>,<span class='st'>"skyblue"</span>,<span class='st'>"blue"</span><span class='op'>)</span>,main <span class='op'>=</span> <span class='st'>"Indicators vs likert response"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="SCEQ_files/figure-html5/bwplot-3.png" width="624" /></p>
+</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
