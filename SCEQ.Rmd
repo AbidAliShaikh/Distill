@@ -103,9 +103,25 @@ m2 <- aggregate(m$value, by=(m[,c(1:5,9)]),FUN=mean)
 bwplot(m2$x ~ m2$Indicator  | m2$Faculties, scales = list(x=list(rot=90)))
 bwplot(m2$x ~ m2$Indicator | m2$Departments,scales=list(x=list(rot=90)))
 # by fac , or by prog or dept etc.
-a<- gmodels::CrossTable(m$Indicator,m$value)
+a<- gmodels::CrossTable(m$Indicator,m$value,chisq = T)
 
 mosaicplot(a$t,color = c("darkred","red","yellow","skyblue","blue"),main = "Indicators vs likert response")
+
+```
+```{r,echo=FALSE, out.width='.49\\linewidth', fig.width=3, fig.height=3,fig.show='hold',fig.align='center'}
+m <- Melt(sceq)
+
+lik2 <- likert(sceq[,names(sceq)%in%q$Qshort])
+
+pie3D(ftable(m$value),radius=0.9,labels=lvls,explode=0.1,main="3D PIE OVERALL",
+  col=c("red","orange","yellow","skyblue","blue"))
+
+likert.bar.plot(lik2,centered=F,ordered=T,plot.percent.neutral=F)+ggtitle("SCEQ 2022")
+
+
+
+
+
 
 ```
 
