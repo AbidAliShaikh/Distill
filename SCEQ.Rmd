@@ -95,6 +95,7 @@ ggcorrplot(b, hc.order = TRUE,
 
 ```{r bwplot}
 library(lattice)
+<<<<<<< Updated upstream
 
 
 m <- Melt(sceq)
@@ -121,7 +122,21 @@ likert.bar.plot(lik2,centered=F,ordered=T,plot.percent.neutral=F)+ggtitle("SCEQ 
 
 
 
+=======
+d<- data.frame(Row_means(sceq))
+dsceq <- cbind(sceq[,!(names(sceq)%in%q$Qshort)],d)
+molten<- reshape2::melt(dsceq)
+bwplot(data=molten, value ~ reorder(variable,value) | Faculties,
+       scales=list(x=list(rot=90)), main="label")
+        
+>>>>>>> Stashed changes
 
+
+```
+
+
+```{r CrossTables}
+gmodels::CrossTable(data=molten, value ~ variable)
 
 ```
 
