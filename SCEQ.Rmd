@@ -109,6 +109,8 @@ a<- gmodels::CrossTable(m$Indicator,m$value,chisq = T)
 mosaicplot(a$t,color = c("darkred","red","yellow","skyblue","blue"),main = "Indicators vs likert response")
 
 ```
+
+
 ```{r,echo=FALSE, out.width='.49\\linewidth', fig.width=3, fig.height=3,fig.show='hold',fig.align='center'}
 m <- Melt(sceq)
 
