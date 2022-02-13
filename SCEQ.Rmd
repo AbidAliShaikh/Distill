@@ -95,7 +95,7 @@ ggcorrplot(b, hc.order = TRUE,
 
 ```{r bwplot}
 library(lattice)
-<<<<<<< Updated upstream
+#<<<<<<< Updated upstream
 
 
 m <- Melt(sceq)
@@ -111,7 +111,7 @@ mosaicplot(a$t,color = c("darkred","red","yellow","skyblue","blue"),main = "Indi
 ```
 
 
-```{r,echo=FALSE, out.width='.49\\linewidth', fig.width=3, fig.height=3,fig.show='hold',fig.align='center'}
+```{r,echo=FALSE likertpluspie3D}
 m <- Melt(sceq)
 
 lik2 <- likert(sceq[,names(sceq)%in%q$Qshort])
@@ -121,24 +121,33 @@ pie3D(ftable(m$value),radius=0.9,labels=lvls,explode=0.1,main="3D PIE OVERALL",
 
 likert.bar.plot(lik2,centered=F,ordered=T,plot.percent.neutral=F)+ggtitle("SCEQ 2022")
 
+pdf(file="courses.pdf",onefile=T)
+for (i in levels(sceq$COURSE_TITLE))
+  for (j in unique(sceq[sceq$COURSE_TITLE==i,]$TEACHER_NAME))
+{   s= subset(sceq,sceq$COURSE_TITLE==i & sceq$TEACHER_NAME == j) 
+    lab=(paste("Course: ",i,"  Teacher Name: ",j))
+      lik2 <- likert(s[,names(s)%in%q$Qshort])
+      likert.bar.plot(lik2,centered=F,ordered=T,plot.percent.neutral=F)+ggtitle(lab)
+  }
+dev.off()
 
-
-
-=======
+#=======
 d<- data.frame(Row_means(sceq))
 dsceq <- cbind(sceq[,!(names(sceq)%in%q$Qshort)],d)
 molten<- reshape2::melt(dsceq)
 bwplot(data=molten, value ~ reorder(variable,value) | Faculties,
        scales=list(x=list(rot=90)), main="label")
         
->>>>>>> Stashed changes
+#>>>>>>> Stashed changes
 
 
 ```
 
 
-```{r CrossTables}
-gmodels::CrossTable(data=molten, value ~ variable)
+```{r }
+
+
+
 
 ```
 
