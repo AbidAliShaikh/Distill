@@ -144,10 +144,11 @@ bwplot(data=molten, value ~ reorder(variable,value) | Faculties,
 ```
 
 
-```{r }
+```{r TukeyHSD, width=720}
 
-
-
+m <- Melt(sceq)
+av1 <- aov(m$value ~ m$Indicator)
+tt <- TukeyHSD(av1, ordered = TRUE,conf.level = .95); plot(tt,las=2)
 
 ```
 
