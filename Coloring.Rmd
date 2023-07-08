@@ -2,46 +2,72 @@
 title: "Colors in R"
 author: "Abid Ali Shaikh"
 date: "12/29/2021"
-output: distill::distill_article
+output: 
+  html_document:
+    code_folding: show
+    theme:
+      bg: "#202123"
+      fg: "#B8BCC2"
+      primary: "#EA80FC"
+      base_font:
+        google: Prompt
+      heading_font:
+        google: Proza Libre
+      version: 3
 ---
 
 ## R Markdown
 
-### The colors in R
 
-```{r}
-table(gsub('[1-9]','',colors()))
+```{r setup}
+knitr::opts_chunk$set()
+if (requireNamespace("thematic")) 
+  thematic::thematic_rmd(font = "auto")
 ```
 
-some color display bars are shown below
-
-```{r}
-barplot(1:20, col=rainbow(20))
+```{css}
+pre code {
+  font-size: 14px; /* Adjust the font size as desired */
+}
 ```
 
-Using ramps we can get almost any number of colors between two colors
+## Themed Plots {.tabset .tabset-pills}
+### Color list
 
 ```{r}
+freq_colors <- c("black", "white", "red", "blue", "green", "yellow", "orange", "purple", "pink", "brown", "gray", "cyan", "magenta", "turquoise", "lavender", "olive", "maroon", "teal", "navy", "beige")
+
+d1<- data.frame(table(gsub('[1-9]','',colors())))
+
+d1[order(d1$Freq,decreasing = T),]
+```
+
+### Rainbow Colors
+
+```{r}
+par(bg="#202123")
+par(col.axis="#B8BCC2")
+barplot(seq(1,20,1), col=rainbow(20))
+```
+
+### colorRampPallete
+
+```{r}
+
+par(col.axis="#B8BCC2")
+
 d <- colorRampPalette(c('yellow','green','red','brown'))
 d(20)
-barplot(1:20,col=d(20))
-barplot(rep(3,20),col=grey.colors(20))
+barplot(seq(1,20,1),col=d(20))
+barplot(seq(1,20,1),col=grey.colors(20))
 ```
 
-### The library colorspace comes with GUI of pallete selection
-
-```{r coloring1}
-library(colorspace)
-
-#p <- choose_palette()
-barplot(rep(1,8),col=rainbow(8))
-
-```
-#### The above selection is easiest and more versatile
-
+### ggplot
 
 ```{r coloring2}
 library(ggplot2)
+par(col.axis="#B8BCC2")
+
 s <- read.table('crawley/scatter1.txt',header=T)
 g1 <- ggplot(s, aes(xv,ys))+geom_smooth(method='lm',size=3,colour='blue')
 g2 <- g1+geom_point(colour='skyblue',alpha=1/2)

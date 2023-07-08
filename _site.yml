@@ -1,4 +1,6 @@
+---
 name: "Distill"
+author: "Abid Ali Shaikh"
 title: "My Distill Website"
 description: |
   My Distill Website
@@ -7,8 +9,6 @@ navbar:
   right:
     - text: "Home"
       href: index.html
-    - text: "Projects"
-      href: Projects.html
     - text: "About"
       href: about.html
     - text: "Book Exercise"  
@@ -17,7 +17,16 @@ navbar:
           href: Coloring.html
         - text: "SortApprox"
           href: SortApprox.html
-        - text: "SCEQ"
-          href: SCEQ.html
+        - text: "NewThemic"
+          href: NewThemic.html
 
-output: distill::distill_article
+output: 
+  distill::distill_article:
+    toc:    true
+    toc_float:    true
+    toc_depth:    6
+    mathjax:    null
+    css:    doc.css
+  
+---
+

@@ -1,13 +1,58 @@
 ---
-title: "About this site"
+title: "About Me"
 description: |
   Some additional details about the website |
   It looks nice typing anything here and generating using build 
   Everything converting to HTML tags
-  
+output: 
+  html_document:
+    code_folding: show
+    theme:
+      bg: "#202123"
+      fg: "#B8BCC2"
+      primary: "#EA80FC"
+      base_font:
+        google: Prompt
+      heading_font:
+        google: Proza Libre
+      version: 3
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+if (requireNamespace("thematic")) 
+  thematic::thematic_rmd(font = "auto")
+
 ```
+
+<div class="collage">
+  <div class="photo">
+    <img src="photo1.jpg" alt="Photo 1">
+    <div class="description">Description for Photo 1</div>
+  </div>
+  <div class="photo">
+    <img src="photo2.jpg" alt="Photo 2">
+    <div class="description">Description for Photo 2</div>
+  </div>
+  <div class="photo">
+    <img src="photo3.jpg" alt="Photo 3">
+    <div class="description">Description for Photo 3</div>
+  </div>
+</div>
+<style>
+.collage {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.photo {
+  flex: 0 0 33.33%;
+  padding: 10px;
+  text-align: center;
+}
+
+.description {
+  margin-top: 10px;
+}
+</style>
 

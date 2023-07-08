@@ -1,0 +1,152 @@
+---
+title: "SCEQ"
+author: "Abid Ali Shaikh"
+date: "1/11/2022"
+output: distill::distill_article
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(output.dir="docs")
+#source("Row_means.R")
+#source("Melt.R")
+```
+
+### Intitial Preparation of Data variables
+
+```{r initialize sceq, eval=FALSE, include=FALSE}
+library(readxl)
+fall <- readxl::read_xlsx("surveys/SCEQ//SCEQ received Viz LMS.xlsx",sheet=2)
+campusindex<- grep("campus",fall$Programs,ignore.case = T)
+lvls <- c("Strongly Disagree","Disagree","uncertain","Agree","Strongly Agree")
+q <- read.csv("surveys/SCEQ/Questionnaires.csv",stringsAsFactors = F)
+library(dplyr)
+
+
+fac <- read.csv("surveys/SCEQ/faculty and programs.csv",header=T,colClasses = "character")
+fac$Programs <- toupper(fac$Programs)
+  fall %>%
+    left_join(fac, by = "Programs") -> fall #adding faculty and Department col
+  
+n<- c(49:50,1:48)
+  fall <- fall[,n]
+startQat=7; endQat=50
+
+names(fall)[startQat:endQat] <- q$Qshort[1:44]# ASSIGN SHORT QUESTIONNAIRE NAMES
+
+fall <- fall %>%
+  mutate_all( as.factor ) 
+fall <- data.frame(fall)
+for (i in startQat:endQat)
+  fall[,i] <- factor(fall[,i], levels= lvls )
+  
+
+
+ptrn <- grep("(FACEV0)[5-9]|(FACEV1)[0-9]",q$Qshort, value=T)
+sceq <- fall[,!(names(fall) %in% ptrn)] # separate SCEQ questionnaires
+facev <- fall [,(names(fall) %in% ptrn)] # separate faculty eval questionnaires
+
+
+  
+
+
+
+```
+
+
+```{r LikertPlots, eval=FALSE, include=FALSE}
+
+suppressMessages(library(likert))
+
+lik <- likert(sceq[-campusindex,names(sceq)%in%q$Qshort])
+likert.heat.plot(lik,centered=F,high.color = "darkgreen",low.color = 'yellow',text.size = 3)+ggtitle("Students ......Campus Jamshoro")
+
+lik <- likert(sceq[campusindex,names(sceq)%in%q$Qshort])
+likert.heat.plot(lik,centered=F,high.color = "darkgreen",low.color = 'yellow',text.size = 3)+ggtitle("Students ......SubCampuses")
+
+# All Sub Campuses heat plots
+nresp <- table(as.character(sceq$Programs[campusindex]))
+for (i in unique(sceq$Programs[campusindex])){
+  
+  lik <- likert(sceq[fall$Programs==i, names(sceq) %in% q$Qshort])
+  print(likert.heat.plot(lik)+ggtitle(i,paste("number of responses:",nresp[[i]])))
+  #print(sapply(sceq$Programs[campusindex],nlevels))
+}
+
+```
+
+
+```{r correlogram, eval=FALSE, include=FALSE}
+b <- cor(Row_means(sceq))
+library(ggcorrplot)
+ggcorrplot(b, hc.order = TRUE, 
+                   type = "lower", 
+                   lab = TRUE, 
+                   lab_size = 3, 
+                   method="circle", 
+                   colors = c("cyan", "white", "magenta"), 
+                   title= " ",
+                   ggtheme=theme_bw)
+#play with subsetting of data 
+
+```
+
+
+```{r bwplot, eval=FALSE, include=FALSE}
+library(lattice)
+#<<<<<<< Updated upstream
+
+
+m <- Melt(sceq)
+
+m2 <- aggregate(m$value, by=(m[,c(1:5,9)]),FUN=mean)
+bwplot(m2$x ~ m2$Indicator  | m2$Faculties, scales = list(x=list(rot=90)))
+bwplot(m2$x ~ m2$Indicator | m2$Departments,scales=list(x=list(rot=90)))
+# by fac , or by prog or dept etc.
+a<- gmodels::CrossTable(m$Indicator,m$value,chisq = T)
+
+mosaicplot(a$t,color = c("darkred","red","yellow","skyblue","blue"),main = "Indicators vs likert response")
+
+```
+
+
+```{r eval=FALSE, include=FALSE}
+m <- Melt(sceq)
+
+lik2 <- likert::likert(sceq[,names(sceq)%in%q$Qshort])
+library(plotrix)
+#pie3D(ftable(m$value),radius=0.9,labels=lvls,explode=0.1,main="3D PIE OVERALL",  col=c("red","orange","yellow","skyblue","blue"))
+
+likert::likert.bar.plot(lik2,centered=F,ordered=T,plot.percent.neutral=F)+ggtitle("SCEQ 2022")
+
+pdf(file="courses.pdf",onefile=T)
+for (i in levels(sceq$COURSE_TITLE))
+  for (j in unique(sceq[sceq$COURSE_TITLE==i,]$TEACHER_NAME))
+{   s= subset(sceq,sceq$COURSE_TITLE==i & sceq$TEACHER_NAME == j) 
+    lab=(paste("Course: ",i,"  Teacher Name: ",j))
+      lik2 <- likert(s[,names(s)%in%q$Qshort])
+      likert::likert.bar.plot(lik2,centered=F,ordered=T,plot.percent.neutral=F)+ggtitle(lab)
+  }
+dev.off()
+
+#=======
+d<- data.frame(Row_means(sceq))
+dsceq <- cbind(sceq[,!(names(sceq)%in%q$Qshort)],d)
+molten<- reshape2::melt(dsceq)
+bwplot(data=molten, value ~ reorder(variable,value) | Faculties,
+       scales=list(x=list(rot=90)), main="label")
+        
+#>>>>>>> Stashed changes
+
+
+```
+
+
+```{r TukeyHSD, eval=FALSE, include=FALSE, width=720}
+
+m <- Melt(sceq)
+av1 <- aov(m$value ~ m$Indicator)
+tt <- TukeyHSD(av1, ordered = TRUE,conf.level = .95); plot(tt,las=2)
+plot(tt)
+```
+
