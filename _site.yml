@@ -19,6 +19,8 @@ navbar:
           href: SortApprox.html
         - text: "NewThemic"
           href: NewThemic.html
+        - text: "GreenMetric"
+          href: GreenMetric.html
 
 output: 
   distill::distill_article:

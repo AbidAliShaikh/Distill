@@ -1,0 +1,84 @@
+---
+title: "GreenMetric"
+author: "Abid Ali Shaikh"
+output:
+  html_document:
+    code_folding: show
+    theme:
+      bg: '#202123'
+      fg: '#B8BCC2'
+      primary: '#EA80FC'
+      base_font:
+        google: Prompt
+      heading_font:
+        google: Proza Libre
+      version: 3
+date: "2023-12-19"
+---
+
+```{r setup, include=FALSE}
+if (requireNamespace("thematic")) 
+  thematic::thematic_rmd(font = "auto")
+```
+
+
+## GreenMetric UI Results of some Pakistani Universities
+
+GreenMetric University of Indonesia (UI) announced during the December 2023, 68 Pakistani Universities were ranked on various Indicators. The plot below shows some notable Universities with values for various indicators.
+
+```{r,echo=F, warning=F,message=F}
+
+library(dplyr)
+library(reshape2)
+library(plotly)
+# Your modified data (without Total_Score)
+df <- read.table(text = "
+Rank_2023 University Setting_Infrastructure Energy_Climate_Change Waste Water Transportation Education_Research
+183 'Muhammad Nawaz Shareef University of Agriculture, Multan Pakistan' 1225 1525 1275 700 1575 1625
+234 'National University of Sciences and Technology' 1225 1350 1200 800 1375 1675
+259 'University of Central Punjab,Lahore, Pakistan' 1200 1575 1050 650 1500 1525
+420 'University of Agriculture Faisalabad' 1180 1150 975 600 1300 1525
+535 'NED University of Engineering & Technology' 950 1100 1050 550 1350 1275
+686 'Bahria University' 485 770 1275 400 885 1750
+718 'Air University Islamabad' 775 1225 975 450 975 1000
+821 'The University of Agriculture, Peshawar - Pakistan' 1015 1125 525 210 1200 750
+828 'Pakistan Institute of Engineering and Applied Sciences (PIEAS)' 940 760 450 450 1085 1100
+835 'Fatima Jinnah Women University' 1005 935 150 300 900 1450
+849 'University of Sindh Jamshoro' 800 1010 600 450 910 900
+865 'University of Education' 935 900 450 400 635 1250
+875 'Shaheed Benazir Bhutto Women University Peshawar Pakistan' 715 1025 450 200 1235 900
+879 'Dow University of Health Sciences Karachi' 580 775 675 500 1085 860
+943 'Sukkur IBA University' 900 1175 375 200 700 650
+969 'University of Peshawar' 875 650 375 160 850 925
+1103 'Sindh Agriculture University Tandojam' 315 820 300 210 485 585
+1176 'Shaheed Mohtarma Benazir Bhutto Medical University' 210 300 75 10 435 175
+", header = TRUE)
+
+# Melt the data frame to long format
+df_long <- reshape2::melt(df, id.vars = c("Rank_2023", "University"), variable.name = "Category", value.name = "Value")
+
+# Create a hoverable plot
+plot <- plot_ly(data = df_long, x = ~Category, y = ~Value, color = ~University,
+                text = ~paste("University: ", University),
+                hoverinfo = "text", mode = "lines+markers", showlegend = FALSE, connectgaps = TRUE) %>%
+  add_trace(type = "scatter", mode = "lines+markers", 
+            line = list(width = lapply(df_long$University, function(uni) if (uni == 'University of Sindh Jamshoro') 5 else 1)),
+            marker = list(color = "blue"),
+            hoveron = "points+lines",  # Set hoveron to include both points and lines
+            hoverinfo = "lines+markers",
+            connectgaps = TRUE)
+
+# Customize the layout
+layout <- list(title = "University Data",
+               xaxis = list(title = "Category"),
+               yaxis = list(title = "Rank 2023"),
+               
+               height = 600)
+
+# Assign layout to the plot
+plot <- plot %>% layout(layout)
+
+# Show the plot
+plot
+```
+
