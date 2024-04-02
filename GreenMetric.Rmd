@@ -21,7 +21,6 @@ if (requireNamespace("thematic"))
   thematic::thematic_rmd(font = "auto")
 ```
 
-
 ## GreenMetric UI Results of some Pakistani Universities
 
 GreenMetric University of Indonesia (UI) announced during the December 2023, 68 Pakistani Universities were ranked on various Indicators. The plot below shows some notable Universities with values for various indicators.
@@ -73,12 +72,18 @@ layout <- list(title = "University Data",
                xaxis = list(title = "Category"),
                yaxis = list(title = "Rank 2023"),
                
-               height = 600)
+               height = 1600,
+               width = 1200)
 
 # Assign layout to the plot
 plot <- plot %>% layout(layout)
 
+
+config <- list(scrollZoom = FALSE)
+
+# Show the plot
+plotly::config(plot, config)
+
 # Show the plot
 plot
 ```
-
